@@ -10,7 +10,7 @@ _Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 
 ### Meeting Scehdule February - 
 
- [Communication Polices (1).pdf](https://github.com/user-attachments/files/18791199/Communication.Polices.1.pdf)
+![Screenshot 2025-02-13 181936](https://github.com/user-attachments/assets/26b7b69e-41bf-4e3d-8e37-54f46d45c7b2)
 
 - Thursdays will be inperson after class meetings
 - Sundays will be Online meetings
