@@ -10,5 +10,5 @@ _Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 
 
 ### Meeting Scehdule - 
-Every Thursday 5pm.
-Every Sunday 2pm.
+ Every Thursday 5pm.
+ Every Sunday 2pm.
