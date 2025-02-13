@@ -4,7 +4,7 @@ COS 420 Software Engineering Team E
 
 _Project Manager_: Hunter Savarese.
 
-_Designer_: Conall Gouveai, Anthony Veilleux, Dylan McKinney	Lorenzo Hayes	Chris Letourneau.
+_Designer_: Conall Gouveai
 
 _Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 
