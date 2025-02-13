@@ -9,6 +9,6 @@ Designer: Conall Gouveai, Anthony Veilleux, Dylan McKinney	Lorenzo Hayes	Chris L
 Developers: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 
 
-###Meeting Scehdule - 
-Every Thursday 5pm.
-Every Sunday 2pm.
+### Meeting Scehdule - 
+            Every Thursday 5pm.
+            Every Sunday 2pm.
