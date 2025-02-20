@@ -18,3 +18,6 @@ _Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 
 ### Engine
 UNITY
+
+### Game Idea
+- 
