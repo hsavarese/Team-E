@@ -18,13 +18,13 @@ public class NewBehaviourScript : MonoBehaviour
     {
         float hori = Input.GetAxisRaw("Horizontal");
         float vert = Input.GetAxisRaw("Vertical");
-        float mouseX = Input.GetAxisRaw("Mouse X");
-        float mouseY = Input.GetAxisRaw("Mouse Y");
+        //float mouseX = Input.GetAxisRaw("Mouse X");
+        //float mouseY = Input.GetAxisRaw("Mouse Y");
         
         Vector2 moveVector = new Vector2(hori * MoveSpeed, vert * MoveSpeed);
-        float angle = math.cos(mouseY/mouseX);
+        //float angle = math.cos(mouseY/mouseX);
 
         rigBod.linearVelocity = moveVector;
-        rigBod.SetRotation(angle);
+        //rigBod.SetRotation(angle);
     }
 }
