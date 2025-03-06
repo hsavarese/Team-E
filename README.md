@@ -1,4 +1,4 @@
-COS 420 Software Engineering Team E
+COS 420 Software Engineering Team E 
 
 ### Team E Members: 
 
