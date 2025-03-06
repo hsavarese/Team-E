@@ -1,4 +1,6 @@
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -14,9 +16,15 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float hori = Input.GetAxis("Horizontal");
-        float vert = Input.GetAxis("Vertical");
+        float hori = Input.GetAxisRaw("Horizontal");
+        float vert = Input.GetAxisRaw("Vertical");
+        float mouseX = Input.GetAxisRaw("Mouse X");
+        float mouseY = Input.GetAxisRaw("Mouse Y");
+        
+        Vector2 moveVector = new Vector2(hori * MoveSpeed, vert * MoveSpeed);
+        float angle = math.cos(mouseY/mouseX);
 
-        rigBod.linearVelocity = new Vector2(hori * MoveSpeed, vert * MoveSpeed);
+        rigBod.linearVelocity = moveVector;
+        rigBod.SetRotation(angle);
     }
 }
