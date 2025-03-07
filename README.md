@@ -19,5 +19,9 @@ _Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
 ### Engine
 UNITY
 
-### Game Idea
-- 
+### Environment
+- Install [UnityHub](https://unity.com/download) and Unity Editor version 6000.0.40f1
+- Clone Repository using GitHub Desktop or using CLI - `git clone https://github.com/hsavarese/Team-E.git`
+- In UnityHub under Projects, select add - add from disk - and select the "Team-E" file from Repository
+- Launch the Project
+- Change Unity Editor version when prompted
