@@ -6,7 +6,7 @@ _Project Manager_: Hunter Savarese.
 
 _Designer_: Conall Gouveai
 
-_Developers_: Anthony Veilleux, Dylan McKinney, Lorenzo Hayes, Chris Letourneau.
+_Developers_: Anthony Veilleux, Lorenzo Hayes, Chris Letourneau.
 
 ### Meeting Schedule February - 
 
