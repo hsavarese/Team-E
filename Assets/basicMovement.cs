@@ -14,7 +14,7 @@ public class NewBehaviourScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float hori = Input.GetAxisRaw("Horizontal");
         float vert = Input.GetAxisRaw("Vertical");
