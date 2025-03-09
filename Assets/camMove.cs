@@ -3,18 +3,24 @@ using UnityEngine.UIElements;
 
 public class camMove : MonoBehaviour
 {
-    private Rigidbody2D player;
+    public float offsetX;
+    public float offsetY;
+    public float offsetZ;
+    public GameObject trackedObject;
+    private Transform player;
+    private Vector3 posOffset = Vector3.back * 10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        player = trackedObject.GetComponent<Transform>();
+        posOffset = new Vector3(offsetX, offsetY, offsetZ);
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = player.position;
-        transform.position += Vector3.back * 10;
+        Vector3 camPos = player.position + posOffset;
+        transform.position = camPos;
     }
 }
