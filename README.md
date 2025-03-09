@@ -15,7 +15,7 @@ _Developers_: Anthony Veilleux, Lorenzo Hayes, Chris Letourneau.
 - Thursdays will be in-person after class meetings
 - Sundays will be Online meetings
 
-- __All Documents are located in the WIKI
+-   ## All Documents are located in the WIKI
 
 ### Engine
 UNITY
