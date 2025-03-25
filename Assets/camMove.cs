@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class camMove : MonoBehaviour
+public class CamMove : MonoBehaviour
 {
     public float offsetX;
     public float offsetY;

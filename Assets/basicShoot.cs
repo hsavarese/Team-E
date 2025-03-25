@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class basicShoot : MonoBehaviour
+public class BasicShoot : MonoBehaviour
 {
     public GameObject bullet;
     public float speedLeft;
@@ -12,7 +12,7 @@ public class basicShoot : MonoBehaviour
     
     void createBullet(float speed, float damage, float lifeTime, Color color){
         GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-        bulletMovement bulMov = newBullet.GetComponent<bulletMovement>();
+        BulletMovement bulMov = newBullet.GetComponent<BulletMovement>();
         BullletDamage bulDam = newBullet.GetComponent<BullletDamage>();
         bulMov.speed = speedLeft;
         bulMov.lifeTime = lifeTimeLeft;
