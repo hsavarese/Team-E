@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
+  iFrames: 0
   isEnemy: 0
 --- !u!60 &917007990
 PolygonCollider2D:
@@ -588,6 +589,7 @@ GameObject:
   - component: {fileID: 1463941454}
   - component: {fileID: 1463941458}
   - component: {fileID: 1463941459}
+  - component: {fileID: 1463941460}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -719,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 25
+  iFrames: 0
   isEnemy: 1
 --- !u!61 &1463941459
 BoxCollider2D:
@@ -766,6 +769,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1463941460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463941453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf88e244b9a22f42ae5a6461a65b085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  isEnemy: 0
 --- !u!1 &1880386245
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class BullletDamage : MonoBehaviour
         if(colHP != null){
             if(colHP.isEnemy == this.isEnemy) return; //if the bullet collides with somthing of the same alignment, ignore collision
 
-            colHP.healthPoints -= damage;
+            colHP.DealDamage(damage);
             Destroy(this.gameObject);
         }
     }
