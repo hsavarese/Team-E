@@ -508,6 +508,8 @@ MonoBehaviour:
   damageRight: 5
   lifeTimeLeft: 1
   lifeTimeRight: 3
+  cooldownLeft: 0.5
+  cooldownRight: 1
 --- !u!114 &917007989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
+  healthPoints: 25
   isEnemy: 1
 --- !u!61 &1463941459
 BoxCollider2D:

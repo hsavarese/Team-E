@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicShoot : MonoBehaviour
@@ -9,6 +10,10 @@ public class BasicShoot : MonoBehaviour
     public float damageRight;
     public float lifeTimeLeft;
     public float lifeTimeRight;
+    public float cooldownLeft;
+    public float cooldownRight;
+
+    private float cooldownTimer;
     
     void createBullet(float speed, float damage, float lifeTime, Color color){
         GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
@@ -31,13 +36,18 @@ public class BasicShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool fireLeft = Input.GetMouseButtonDown(0); //left mouse button
-        bool fireRight = Input.GetMouseButtonDown(1); //right mouse button
-        if(fireLeft){
-            createBullet(speedLeft, damageLeft, lifeTimeLeft, Color.red);
+        if(cooldownTimer > 0){
+            cooldownTimer -= Time.deltaTime;
         }
-        if(fireRight){
+        bool fireLeft = Input.GetMouseButton(0); //left mouse button
+        bool fireRight = Input.GetMouseButton(1); //right mouse button
+        if(fireLeft && cooldownTimer <= 0){
+            createBullet(speedLeft, damageLeft, lifeTimeLeft, Color.red);
+            cooldownTimer = cooldownLeft;
+        }
+        if(fireRight && cooldownTimer <= 0){
             createBullet(speedRight, damageRight, lifeTimeRight, Color.blue);
+            cooldownTimer = cooldownRight;
         }
     }
 
