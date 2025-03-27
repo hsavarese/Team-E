@@ -16,8 +16,14 @@ public class EnemyDamage : MonoBehaviour
         
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        
+        Health colHP = collision.gameObject.GetComponent<Health>();
+        if(colHP != null){
+            if(colHP.isEnemy == this.isEnemy) return; //if the collision is between two things of the same alignment, ignore collision
+
+            colHP.DealDamage(damage);
+        }
     }
+
 }

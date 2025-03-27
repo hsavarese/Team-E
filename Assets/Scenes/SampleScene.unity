@@ -522,8 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
-  iFrames: 0
+  healthPoints: 25
+  iFrames: 1
   isEnemy: 0
 --- !u!60 &917007990
 PolygonCollider2D:
@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf88e244b9a22f42ae5a6461a65b085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  isEnemy: 0
+  damage: 5
+  isEnemy: 1
 --- !u!1 &1880386245
 GameObject:
   m_ObjectHideFlags: 0
