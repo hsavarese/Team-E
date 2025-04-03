@@ -3448,10 +3448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e21f626c727ca4b83c59e2a08a6167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   smoothTime: 0.07
   target: {fileID: 917007985}
-=======
   offsetX: 0
   offsetY: 0
   offsetZ: -10
@@ -3592,7 +3590,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542812195}
   m_CullTransparentMesh: 1
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,11 +3674,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &764996674
-=======
 --- !u!1 &713073441
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3689,11 +3683,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 764996675}
   m_Layer: 0
   m_Name: Generation
-=======
   - component: {fileID: 713073445}
   - component: {fileID: 713073444}
   - component: {fileID: 713073443}
@@ -3701,24 +3693,19 @@ GameObject:
   - component: {fileID: 713073446}
   m_Layer: 5
   m_Name: Canvas
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &764996675
 Transform:
-=======
 --- !u!114 &713073442
 MonoBehaviour:
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 764996674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3728,7 +3715,6 @@ MonoBehaviour:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_GameObject: {fileID: 713073441}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3898,7 +3884,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845152869}
   m_CullTransparentMesh: 1
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
 --- !u!1 &917007982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,9 +5274,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1463941457}
   - {fileID: 1315017699}
-<<<<<<< HEAD
   - {fileID: 764996675}
-=======
   - {fileID: 1033578156}
   - {fileID: 713073445}
->>>>>>> cf07c538ef61593af570d09286b7e2cd2d75e2c6
