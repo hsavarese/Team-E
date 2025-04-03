@@ -6,7 +6,7 @@ public class BasicMovement : MonoBehaviour
 {
     public float MoveSpeed;
 
-    /*
+   /*
     public Sprite still;
     public Sprite forward;
     public Sprite diagonal;

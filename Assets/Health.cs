@@ -1,17 +1,19 @@
 using UnityEngine;
+using UnityEngine.InputSystem.iOS;
 
 public class Health : MonoBehaviour
 {
-    public float healthPoints;
+    public float maxHealthPoints;
     public float iFrames; //total time invulnerable between attacks
     public bool isEnemy; //true for enemies, flase for allies
 
     private float invulTimer;
+    private float healthPoints;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        healthPoints = maxHealthPoints;
     }
 
     // Update is called once per frame
@@ -44,5 +46,19 @@ public class Health : MonoBehaviour
         } else {
             return 0;
         }
+    }
+
+    /*
+    Restores health to the target up to their maximum health
+
+    Returns the amout of health restored
+    */
+    public float RestoreHealth(float heal){
+        healthPoints += heal;
+        if(healthPoints > maxHealthPoints){
+            float amoutHealed = heal - (maxHealthPoints - healthPoints);
+            healthPoints = maxHealthPoints;
+            return amoutHealed;
+        } else return heal;
     }
 }

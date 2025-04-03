@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,11 +14,15 @@ public class BasicShoot : MonoBehaviour
     public float lifeTimeRight;
     public float cooldownLeft;
     public float cooldownRight;
+    public float accuracyLeft;
+    public float accuracyRight;
 
     private float cooldownTimer;
     
-    void createBullet(float speed, float damage, float lifeTime, Color color){
-        GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+    void createBullet(float speed, float damage, float lifeTime, float accuracy, Color color){
+        Quaternion rotationOffset = transform.rotation;
+        rotationOffset.z += UnityEngine.Random.Range(-1, 1) * accuracy;
+        GameObject newBullet = Instantiate(bullet, transform.position, rotationOffset);
         BulletMovement bulMov = newBullet.GetComponent<BulletMovement>();
         BullletDamage bulDam = newBullet.GetComponent<BullletDamage>();
         bulMov.speed = speedLeft;
@@ -42,11 +48,11 @@ public class BasicShoot : MonoBehaviour
         bool fireLeft = Input.GetMouseButton(0); //left mouse button
         bool fireRight = Input.GetMouseButton(1); //right mouse button
         if(fireLeft && cooldownTimer <= 0){
-            createBullet(speedLeft, damageLeft, lifeTimeLeft, Color.red);
+            createBullet(speedLeft, damageLeft, lifeTimeLeft, accuracyLeft, Color.red);
             cooldownTimer = cooldownLeft;
         }
         if(fireRight && cooldownTimer <= 0){
-            createBullet(speedRight, damageRight, lifeTimeRight, Color.blue);
+            createBullet(speedRight, damageRight, lifeTimeRight, accuracyRight, Color.blue);
             cooldownTimer = cooldownRight;
         }
     }
