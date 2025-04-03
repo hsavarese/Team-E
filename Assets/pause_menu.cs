@@ -62,3 +62,4 @@ public class pause_menu : MonoBehaviour
         Application.Quit(); // will only work if you build and run the application
     }
 }
+
