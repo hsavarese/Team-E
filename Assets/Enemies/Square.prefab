@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 25
+  maxHealthPoints: 10
   iFrames: 0
   isEnemy: 1
 --- !u!61 &3661290954802257755

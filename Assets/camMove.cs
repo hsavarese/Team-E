@@ -6,7 +6,14 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float smoothTime = 0.1f; //higher number more smooth/delayed it is
     private Vector3 velocity = Vector3.zero;
 
-    [SerializeField] private Transform target;
+    private Transform target;
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        target = player.transform;
+    }
 
     private void Update()
     {
