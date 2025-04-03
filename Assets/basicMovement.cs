@@ -6,11 +6,11 @@ public class BasicMovement : MonoBehaviour
 {
     public float MoveSpeed;
 
-    /*
+   
     public Sprite still;
     public Sprite forward;
     public Sprite diagonal;
-    */
+    
     private Rigidbody2D rigBod;
     private SpriteRenderer spriteRend;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
