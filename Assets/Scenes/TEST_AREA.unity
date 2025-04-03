@@ -415,6 +415,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_Size.x
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_Size.y
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3252576348473297088, guid: eb4b7dc346ede40bab48476cb9efb05b, type: 3}
+    - target: {fileID: 1449089957730510820, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932231329681532420, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: still
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932231329681532420, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: forward
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932231329681532420, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -454,6 +494,26 @@ PrefabInstance:
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993262953053570096, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993262953053570096, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993262953053570096, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993262953053570096, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993262953053570096, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
