@@ -24,7 +24,8 @@ public class BullletDamage : MonoBehaviour
             if(colHP.isEnemy == this.isEnemy) return; //if the bullet collides with somthing of the same alignment, ignore collision
 
             colHP.DealDamage(damage);
-            Destroy(this.gameObject);
+            
         }
+        Destroy(this.gameObject);
     }
 }
