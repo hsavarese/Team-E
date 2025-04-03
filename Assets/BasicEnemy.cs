@@ -9,10 +9,10 @@ public class BasicEnemy : MonoBehaviour
     private Rigidbody2D rigBod;
     
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerPos = target.GetComponent<Transform>();
+        target = GameObject.FindWithTag("Player"); 
+        playerPos = target.transform; 
         rigBod = GetComponent<Rigidbody2D>();
     }
 
