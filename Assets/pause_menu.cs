@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class pause_menu : MonoBehaviour
 {
@@ -38,12 +40,20 @@ public class pause_menu : MonoBehaviour
         
     }
 
+    private IEnumerator DelayPause()
+    {
+        yield return null; //delays 1 one frame
+        Time.timeScale = 0f;
+    }
+
     public void PauseGame()
     {
         PausePanel.SetActive(true);
         Dark_Overlay.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        StartCoroutine(DelayPause());
         isPaused = true;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void ResumeGame()
