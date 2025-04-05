@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class pause_menu : MonoBehaviour
 {
 
-    public GameObject PauseMenu;
+    public GameObject PausePanel;
+    public GameObject Dark_Overlay;
 
     public static bool isPaused;
 
@@ -13,13 +14,14 @@ public class pause_menu : MonoBehaviour
     void Start()
     {
         
-        PauseMenu.SetActive(false);
+        PausePanel.SetActive(false);
+        Dark_Overlay.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update running");
+        Debug.Log("Update running"); //These are tests to make sure the esp key is being read
     if (Input.GetKeyDown(KeyCode.Escape))
     {
         Debug.Log("Escape key pressed");
@@ -38,14 +40,16 @@ public class pause_menu : MonoBehaviour
 
     public void PauseGame()
     {
-        PauseMenu.SetActive(true);
+        PausePanel.SetActive(true);
+        Dark_Overlay.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void ResumeGame()
     {
-        PauseMenu.SetActive(false);
+        PausePanel.SetActive(false);
+        Dark_Overlay.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -55,6 +59,7 @@ public class pause_menu : MonoBehaviour
         Time.timeScale=1f;
         SceneManager.LoadScene("Main Menu");
         isPaused = false;
+        
     }
 
     public void QuitGame()
