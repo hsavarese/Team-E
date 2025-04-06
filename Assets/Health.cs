@@ -61,4 +61,13 @@ public class Health : MonoBehaviour
             return amoutHealed;
         } else return heal;
     }
+
+    /*
+    Returns the amount of health remaining as a decimal between 0 and 1;
+    */
+    public float getHealthPercent(){
+        if(healthPoints <= 0) return 0;
+        if(healthPoints >= maxHealthPoints) return 1;
+        return healthPoints / maxHealthPoints;
+    }
 }
