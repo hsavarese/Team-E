@@ -59,9 +59,11 @@ public class Health : MonoBehaviour
     Returns the amout of health restored
     */
     public float RestoreHealth(float heal){
+        if(heal <= 0 || healthPoints == maxHealthPoints) return 0; //doesn't heal a negative amount and can't heal past full health
+
         healthPoints += heal;
         if(healthPoints > maxHealthPoints){
-            float amoutHealed = heal - (maxHealthPoints - healthPoints);
+            float amoutHealed = heal - (healthPoints - maxHealthPoints);
             healthPoints = maxHealthPoints;
             return amoutHealed;
         } else return heal;
