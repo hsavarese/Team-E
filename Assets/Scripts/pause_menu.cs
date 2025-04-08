@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class pause_menu : MonoBehaviour
 {
 
-    public GameObject PauseMenu;
+    public GameObject PausePanel;
+    public GameObject Dark_Overlay;
 
     public static bool isPaused;
 
@@ -13,13 +16,14 @@ public class pause_menu : MonoBehaviour
     void Start()
     {
         
-        PauseMenu.SetActive(false);
+        PausePanel.SetActive(false);
+        Dark_Overlay.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update running");
+        Debug.Log("Update running"); //These are tests to make sure the esp key is being read
     if (Input.GetKeyDown(KeyCode.Escape))
     {
         Debug.Log("Escape key pressed");
@@ -36,16 +40,26 @@ public class pause_menu : MonoBehaviour
         
     }
 
+    private IEnumerator DelayPause()
+    {
+        yield return null; //delays 1 one frame
+        Time.timeScale = 0f;
+    }
+
     public void PauseGame()
     {
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        PausePanel.SetActive(true);
+        Dark_Overlay.SetActive(true);
+        //Time.timeScale = 0f;
+        StartCoroutine(DelayPause());
         isPaused = true;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void ResumeGame()
     {
-        PauseMenu.SetActive(false);
+        PausePanel.SetActive(false);
+        Dark_Overlay.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -55,6 +69,7 @@ public class pause_menu : MonoBehaviour
         Time.timeScale=1f;
         SceneManager.LoadScene("Main Menu");
         isPaused = false;
+        
     }
 
     public void QuitGame()

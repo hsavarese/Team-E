@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
 
 public class Health : MonoBehaviour
 {
-    public float maxHealthPoints;
+    public float maxHealthPoints; // minimum 1
     public float iFrames; //total time invulnerable between attacks
     public bool isEnemy; //true for enemies, flase for allies
 
@@ -13,7 +12,11 @@ public class Health : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthPoints = maxHealthPoints;
+        if(maxHealthPoints >= 1) healthPoints = maxHealthPoints;
+        else{
+            maxHealthPoints = 1;
+            healthPoints = 1;
+        } 
     }
 
     // Update is called once per frame
@@ -40,12 +43,14 @@ public class Health : MonoBehaviour
     */
     public float DealDamage(float damage){
         if(invulTimer <= 0){
-            healthPoints -= damage;
             invulTimer = iFrames;
-            return damage;
-        } else {
-            return 0;
+            if(damage > 0){ 
+                healthPoints -= damage;
+                return damage;
+            }
         }
+        return 0;
+        
     }
 
     /*
@@ -54,11 +59,26 @@ public class Health : MonoBehaviour
     Returns the amout of health restored
     */
     public float RestoreHealth(float heal){
+        if(heal <= 0 || healthPoints == maxHealthPoints) return 0; //doesn't heal a negative amount and can't heal past full health
+
         healthPoints += heal;
         if(healthPoints > maxHealthPoints){
-            float amoutHealed = heal - (maxHealthPoints - healthPoints);
+            float amoutHealed = heal - (healthPoints - maxHealthPoints);
             healthPoints = maxHealthPoints;
             return amoutHealed;
         } else return heal;
+    }
+
+    /*
+    Returns the amount of health remaining as a decimal between 0 and 1;
+    */
+    public float getHealthPercent(){
+        if(healthPoints <= 0) return 0;
+        if(healthPoints >= maxHealthPoints) return 1;
+        return healthPoints / maxHealthPoints;
+    }
+
+    public float getCurrentHealth(){
+        return healthPoints;
     }
 }
