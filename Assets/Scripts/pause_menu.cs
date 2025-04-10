@@ -40,18 +40,13 @@ public class pause_menu : MonoBehaviour
         
     }
 
-    private IEnumerator DelayPause()
-    {
-        yield return null; //delays 1 one frame
-        Time.timeScale = 0f;
-    }
+
 
     public void PauseGame()
     {
         PausePanel.SetActive(true);
         Dark_Overlay.SetActive(true);
-        //Time.timeScale = 0f;
-        StartCoroutine(DelayPause());
+        Time.timeScale = 0f;
         isPaused = true;
         EventSystem.current.SetSelectedGameObject(null);
     }

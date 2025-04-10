@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      heal_station_v1_0: 9517381869548343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
