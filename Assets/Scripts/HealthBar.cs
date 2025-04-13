@@ -14,7 +14,6 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(playerHealth.getHealthPercent());
         transform.localScale = new Vector3(playerHealth.getHealthPercent(), 1, 1);
     }
 }

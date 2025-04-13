@@ -20,5 +20,6 @@ public class BasicEnemy : MonoBehaviour
     void FixedUpdate()
     {
         rigBod.MovePosition(Vector2.MoveTowards(rigBod.position, playerPos.position, moveSpeed));
+        
     }
 }

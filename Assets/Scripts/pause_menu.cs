@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class pause_menu : MonoBehaviour
+public class Pause_menu : MonoBehaviour
 {
 
     public GameObject PausePanel;
@@ -23,7 +23,7 @@ public class pause_menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update running"); //These are tests to make sure the esp key is being read
+        //Debug.Log("Update running"); //These are tests to make sure the esp key is being read
     if (Input.GetKeyDown(KeyCode.Escape))
     {
         Debug.Log("Escape key pressed");
@@ -70,6 +70,10 @@ public class pause_menu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); // will only work if you build and run the application
+    }
+
+    public bool getIsPaused(){
+        return isPaused;
     }
 }
 
