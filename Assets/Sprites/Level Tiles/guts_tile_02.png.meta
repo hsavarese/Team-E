@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      guts_tile_02_0: 2024760370919461569
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
