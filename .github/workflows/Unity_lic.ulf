@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><root><TimeStamp Value="1KoGPIju2pnrng=="/>
+    <License id="Terms">
+        <MachineBindings>
+            <Binding Key="1" Value="00342-21037-88959-AAOEM"/>
+            <Binding Key="2" Value="CA4E2_0E_0B2409_27_3E24EA_0C_000000_00.1"/>
+            <Binding Key="4" Value="Q0ZEVDRYMw=="/>
+            <Binding Key="5" Value="98:59:7a:58:51:bf"/>
+        </MachineBindings>
+        <MachineID Value="WdkAYurR5hY1FA1/q1ewxJV48UE="/>
+        <SerialHash Value="1d26d05edee62d1acbbcf1807a6c8b9d4499ffcd"/>
+        <Features>
+            <Feature Value="33"/>
+            <Feature Value="1"/>
+            <Feature Value="12"/>
+            <Feature Value="2"/>
+            <Feature Value="24"/>
+            <Feature Value="3"/>
+            <Feature Value="36"/>
+            <Feature Value="17"/>
+            <Feature Value="19"/>
+            <Feature Value="62"/>
+        </Features>
+        <DeveloperData Value="AQAAAEY0LVVNRU4tSkQ4SC1BNjRNLUYzQTUtVjRHVg=="/>
+        <SerialMasked Value="F4-UMEN-JD8H-A64M-F3A5-XXXX"/>
+        <StartDate Value="2025-04-14T00:00:00"/>
+        <UpdateDate Value="2025-04-15T23:15:18"/>
+        <InitialActivationDate Value="2025-04-14T23:06:22"/>
+        <LicenseVersion Value="6.x"/>
+        <ClientProvidedVersion Value="2017.2.0"/>
+        <AlwaysOnline Value="false"/>
+        <Entitlements>
+            <Entitlement Ns="unity_editor" Tag="UnityPersonal" Type="EDITOR" ValidTo="9999-12-31T00:00:00"/>
+            <Entitlement Ns="unity_editor" Tag="DarkSkin" Type="EDITOR_FEATURE" ValidTo="9999-12-31T00:00:00"/>
+        </Entitlements>
+    </License><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#Terms"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>sx0BqXbK1cRJSqWn85ZxHdI/gr4=</DigestValue></Reference></SignedInfo><SignatureValue>ypbDGl6+lSrmpE0JV6JOWppKKU2+aXor/DrOAvQ82I2M4V4+fcakOb8SazmvZz7ytKXBiwxMPlEK
+dkwxn6XYPs/u2npuZIMGwNLzzQG+acxav0S8J+c9pUxT3LyNIG2YCxcCMhwXKHRYGjODgvyrjv9b
+e2gmpDIHfFuX8VMUv5W3jJujrGRbGjQjUmox0DVtxO2fOfdkL2PgVoV7r+CTQ/LCAhb1pr42YpiT
+98+lKQx+dTE+gseY2NU+PXMIGzQ8Lgj7WFqwllyDvnUFuKiHX9mYLwsRSCpxOwj+o1/K4Y8bvAi+
+3QdH9NCmd+Ht1aUfoXWhEPwU0uaYC1YZUnwLjQ==</SignatureValue></Signature></root>
