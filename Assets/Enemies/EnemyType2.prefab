@@ -107,6 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 224692722446295044, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
   moveSpeed: 0.05
+  BioBit: {fileID: 0}
+  minBits: 1
+  maxBits: 10
 --- !u!50 &6607697375912546579
 Rigidbody2D:
   serializedVersion: 5
