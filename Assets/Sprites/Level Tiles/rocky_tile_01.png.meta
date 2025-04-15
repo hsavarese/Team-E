@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rocky_tile_01_0: -2531514384315317468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

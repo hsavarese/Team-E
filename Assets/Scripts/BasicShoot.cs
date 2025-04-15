@@ -24,8 +24,8 @@ public class BasicShoot : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, transform.position, rotationOffset);
         BulletMovement bulMov = newBullet.GetComponent<BulletMovement>();
         BullletDamage bulDam = newBullet.GetComponent<BullletDamage>();
-        bulMov.speed = speedLeft;
-        bulMov.lifeTime = lifeTimeLeft;
+        bulMov.speed = speed;
+        bulMov.lifeTime = lifeTime;
         bulDam.damage = damage;
         bulDam.isEnemy = false;
         newBullet.GetComponent<Renderer>().material.color = color;
