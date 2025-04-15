@@ -23,20 +23,24 @@ public class Health : MonoBehaviour
     void Update() //no matter what damage kills the enemy, the enemy will drop bio bits
     {
         if (healthPoints <= 0)
-{
-    if (isEnemy)
-    {
-        BasicEnemy enemy = GetComponent<BasicEnemy>();
-        if (enemy != null)
         {
-            enemy.Die(); 
-            return; // prevent further after destruction
-        }
-    }
+            if (isEnemy)
+            {
+                BasicEnemy enemy = GetComponent<BasicEnemy>();
+                if (enemy != null)
+                {
+                    enemy.Die(); 
+                    return; // prevent further after destruction
+                }
+    
+            }
 
-    Destroy(this.gameObject); // fallback if no enemy logic
-    return;
-}
+            Destroy(this.gameObject); // fallback if no enemy logic
+            return;
+        }
+        if(invulTimer > 0){
+            invulTimer -= Time.deltaTime;
+        }
 
     }
     /*{
