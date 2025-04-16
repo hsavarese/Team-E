@@ -1,39 +1,55 @@
-# name: Build project
+name: Test project
 
-# on: [push, pull_request]
+on: [push, pull_request]
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
 
-# jobs:
-#   buildForAllSupportedPlatforms:
-#     name: Build for ${{ matrix.targetPlatform }}
-#     runs-on: ubuntu-latest
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         targetPlatform:
-#           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-#           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-#           - StandaloneLinux64 # Build a Linux 64-bit standalone.
+jobs:
+  testAllModes:
+    name: Test in ${{ matrix.testMode }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - . # assumes the Unity project is in the root of the repo
+        unityVersion:
+          - 6000.0.41f1 # or whatever version you're using
+        testMode:
+          - playmode
+          - editmode
 
-#     steps:
-#       - uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0
-#           lfs: true
-#       - uses: actions/cache@v3
-#         with:
-#           path: Library
-#           key: Library-${{ matrix.targetPlatform }}
-#           restore-keys: Library-
-#       - if: matrix.targetPlatform == 'Android'
-#         uses: jlumbroso/free-disk-space@v1.3.1
-#       - uses: game-ci/unity-builder@v4
-#         env:
-#           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-#           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-#           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-#         with:
-#           targetPlatform: ${{ matrix.targetPlatform }}
-#       - uses: actions/upload-artifact@v3
-#         with:
-#           name: Build-${{ matrix.targetPlatform }}
-#           path: build/${{ matrix.targetPlatform }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: game-ci/unity-test-runner@v4
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+          customParameters: '-runTests -testFilter=HealthTest'
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Coverage results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.coveragePath }}
