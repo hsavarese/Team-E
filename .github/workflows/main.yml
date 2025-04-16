@@ -1,4 +1,4 @@
-name: Test package
+name: Test project
 
 on: [push, pull_request]
 
@@ -10,12 +10,12 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - test-package
+          - . # assumes the Unity project is in the root of the repo
+        unityVersion:
+          - 6000.0.41f1 # or whatever version you're using
         testMode:
           - playmode
           - editmode
-        unityVersion:
-          - 6000.0.41f1 # <- add this based on your local Unity Hub path
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,6 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          packageMode: true
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           testMode: ${{ matrix.testMode }}
