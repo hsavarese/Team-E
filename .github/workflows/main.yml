@@ -1,23 +1,51 @@
-# .github/workflows/test-health.yml
-name: Run Specific Unity Test
+name: Test package
 
-on:
-  push:
-    paths:
-      - '**/HealthTest.cs'
-  workflow_dispatch:  # allows manual trigger
+on: [push, pull_request]
 
 jobs:
-  test:
-    name: Run HealthTest
+  testAllModes:
+    name: Test in ${{ matrix.testMode }}
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - test-package
+        unityVersion: '2020.3.0f1'
+        testMode:
+          - playmode
+          - editmode
 
-      - name: Run HealthTest only
-        uses: game-ci/unity-test-runner@v3
+    steps:
+      - uses: actions/checkout@v4
         with:
-          projectPath: .
-          testMode: playmode
-          testPlatform: StandaloneLinux64
+          lfs: true
+
+      - uses: game-ci/unity-test-runner@v4
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          packageMode: true
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
           customParameters: '-runTests -testFilter=HealthTest'
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Coverage results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.coveragePath }}
