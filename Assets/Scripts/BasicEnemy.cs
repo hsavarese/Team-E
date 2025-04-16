@@ -52,8 +52,8 @@ public class BasicEnemy : MonoBehaviour
         rb.AddForce(force, ForceMode2D.Impulse);
 
          // slow it down
-        rb.drag = 4f; // smooth glide then stop
-        rb.angularDrag = 4f;
+        rb.linearDamping = 4f; // smooth glide then stop
+        rb.angularDamping = 4f;
     }
 
     // Make sure it's only worth 1 point
