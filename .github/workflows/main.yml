@@ -14,6 +14,8 @@ jobs:
         testMode:
           - playmode
           - editmode
+        unityVersion:
+          - 6000.0.41f1 # <- add this based on your local Unity Hub path
 
     steps:
       - uses: actions/checkout@v4
