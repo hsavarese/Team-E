@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7991998592608238386}
   - component: {fileID: 1449089957730510820}
+  - component: {fileID: 5943084077991183378}
   - component: {fileID: 3932231329681532420}
   - component: {fileID: 693768775248782865}
   - component: {fileID: 6556792935684587890}
@@ -92,6 +93,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5943084077991183378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224692722446295044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9960c575115827f40802973d8e2d07be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthBase: 10
+  damageBase: 1
+  shotsPerSec: 1
+  shotSpeed: 10
+  shotDistance: 1
+  accuracy: 0.1
+  moveSpeed: 5
 --- !u!114 &3932231329681532420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26941c98ee66d8943b196d69aee75bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
 --- !u!50 &693768775248782865
 Rigidbody2D:
   serializedVersion: 5
@@ -145,16 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7412986986128646210, guid: 9e0054a5f97b5954c8186cda2cf0218c, type: 3}
-  speedLeft: 10
-  speedRight: 5
-  damageLeft: 1
-  damageRight: 5
-  lifeTimeLeft: 1
-  lifeTimeRight: 3
-  cooldownLeft: 0.5
-  cooldownRight: 1
-  accuracyLeft: 0.1
-  accuracyRight: 0.5
 --- !u!114 &788721675116569550
 MonoBehaviour:
   m_ObjectHideFlags: 0

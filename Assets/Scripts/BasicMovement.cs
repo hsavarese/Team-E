@@ -1,10 +1,13 @@
 using Unity.Mathematics;
+using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BasicMovement : MonoBehaviour
 {
-    public float MoveSpeed;
+    const float MIN_SPEED = 2;
+    const float MAX_SPEED = 10;
+    private float moveSpeed;
 
    /*
     public Sprite still;
@@ -39,11 +42,20 @@ public class BasicMovement : MonoBehaviour
         }
         */
 
-        Vector2 moveVector = new Vector2(hori * MoveSpeed, vert * MoveSpeed);
+        Vector2 moveVector = new Vector2(hori * moveSpeed, vert * moveSpeed);
         float angle = math.degrees(math.atan2(difVec.x, difVec.y));
 
         rigBod.angularVelocity = 0;
         rigBod.linearVelocity = moveVector;
         rigBod.SetRotation(-angle);
+    }
+
+    public float setMoveSpeed(float newSpeed){
+        moveSpeed = newSpeed;
+        if(moveSpeed > MAX_SPEED) 
+            moveSpeed = MAX_SPEED;
+        else if(moveSpeed < MIN_SPEED) 
+            moveSpeed = MIN_SPEED;
+        return moveSpeed;
     }
 }

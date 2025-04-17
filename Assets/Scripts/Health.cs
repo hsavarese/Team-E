@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    const float MIN_MAX_HEALTH = 1;
     public float maxHealthPoints; // minimum 1
     public float iFrames; //total time invulnerable between attacks
     public bool isEnemy; //true for enemies, flase for allies
@@ -12,10 +13,10 @@ public class Health : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(maxHealthPoints >= 1) healthPoints = maxHealthPoints;
+        if(maxHealthPoints >= MIN_MAX_HEALTH) healthPoints = maxHealthPoints;
         else{
-            maxHealthPoints = 1;
-            healthPoints = 1;
+            maxHealthPoints = MIN_MAX_HEALTH;
+            healthPoints = MIN_MAX_HEALTH;
         } 
     }
 
@@ -80,5 +81,36 @@ public class Health : MonoBehaviour
 
     public float getCurrentHealth(){
         return healthPoints;
+    }
+
+    public float getMaxHealth(){
+        return maxHealthPoints;
+    }
+
+    /*
+    Sets the max health to newMax, if maxhealth is less than the minimum it is set to the minimum
+    Increase current health by the increase in max health
+    reduces current health to max health if it is above current
+
+    Returns the updated max health without the multiplier
+    */
+    public float setMaxHealth(float baseMax, float healthMult = 1){
+        if(baseMax < MIN_MAX_HEALTH)
+            baseMax = MIN_MAX_HEALTH;
+
+        float healthChange = baseMax * healthMult - maxHealthPoints;
+        maxHealthPoints = baseMax * healthMult;
+        if(maxHealthPoints < MIN_MAX_HEALTH){
+            healthChange += maxHealthPoints - MIN_MAX_HEALTH;
+            maxHealthPoints = MIN_MAX_HEALTH;
+        } 
+
+        if(healthChange > 0) 
+            healthPoints += healthChange;
+
+        if(healthPoints > maxHealthPoints) 
+            healthPoints = maxHealthPoints;
+
+        return baseMax;
     }
 }
