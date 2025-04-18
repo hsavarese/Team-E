@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
 
     private float invulTimer;
     private float healthPoints;
+    private BasicMovement movement;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
             maxHealthPoints = MIN_MAX_HEALTH;
             healthPoints = MIN_MAX_HEALTH;
         } 
+        movement = GetComponent<BasicMovement>();
     }
 
     // Update is called once per frame
@@ -58,7 +60,8 @@ public class Health : MonoBehaviour
 
     //True if they can take damage, Flase If they can't take damage
     public bool IsVulnerable(){
-        return invulTimer <= 0;
+        // Check both regular invincibility frames and dash invincibility
+        return invulTimer <= 0 && (movement == null || !movement.IsDashing());
     }
 
     /*
@@ -67,7 +70,8 @@ public class Health : MonoBehaviour
     Returns the amout of damage delt
     */
     public float DealDamage(float damage){
-        if(invulTimer <= 0){
+        // Only take damage if not invincible from either source
+        if(IsVulnerable()){
             invulTimer = iFrames;
             if(damage > 0){ 
                 healthPoints -= damage;

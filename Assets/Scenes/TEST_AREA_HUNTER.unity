@@ -234,10 +234,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2732333153978592252, guid: a9cfabe67837cbe8a9dea1ef03892a05, type: 3}
-      propertyPath: BioBit
-      value: 
-      objectReference: {fileID: 1204417818}
     - target: {fileID: 6621289183209255828, guid: a9cfabe67837cbe8a9dea1ef03892a05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3
@@ -281,10 +277,6 @@ PrefabInstance:
     - target: {fileID: 7121880039589249092, guid: a9cfabe67837cbe8a9dea1ef03892a05, type: 3}
       propertyPath: m_Name
       value: EnemyType1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217494133733897364, guid: a9cfabe67837cbe8a9dea1ef03892a05, type: 3}
-      propertyPath: damage
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40207,11 +40199,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231dd53dfb4f43937bd534c6d1c086ba, type: 3}
---- !u!1 &1204417818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2936208051503382694, guid: d714fc015c8c81641befa1fdd7a41abb, type: 3}
-  m_PrefabInstance: {fileID: 7376471218928386773}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438371118
 GameObject:
   m_ObjectHideFlags: 0
