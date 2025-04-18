@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5356652020274508452}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 0.1
+  BioBit: {fileID: 0}
+  minBits: 1
+  maxBits: 10
 --- !u!50 &1804006794006491713
 Rigidbody2D:
   serializedVersion: 5

@@ -1,20 +1,24 @@
 using System.Security.Cryptography;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class BasicShoot : MonoBehaviour
 {
-    public GameObject bullet;
-    public float speedLeft;
-    public float speedRight;
-    public float damageLeft;
-    public float damageRight;
-    public float lifeTimeLeft;
-    public float lifeTimeRight;
-    public float cooldownLeft;
-    public float cooldownRight;
-    public float accuracyLeft;
-    public float accuracyRight;
+    const float MIN_DAMAGE = 1;
+    const float MIN_LIFE_TIME = 0.1f;
+    const float MAX_COOLDOWN = 10;
+    [SerializeField] private GameObject bullet;
+    private float speedLeft;
+    //public float speedRight;
+    private float damageLeft;
+    //public float damageRight;
+    private float lifeTimeLeft;
+    //public float lifeTimeRight;
+    private float cooldownLeft;
+    //public float cooldownRight;
+    private float accuracyLeft;
+    //public float accuracyRight;
 
     private float cooldownTimer;
     
@@ -39,7 +43,7 @@ public class BasicShoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(cooldownTimer > 0){
             cooldownTimer -= Time.deltaTime;
@@ -50,11 +54,44 @@ public class BasicShoot : MonoBehaviour
             createBullet(speedLeft, damageLeft, lifeTimeLeft, accuracyLeft, Color.red);
             cooldownTimer = cooldownLeft;
         }
+        /*
         if(fireRight && cooldownTimer <= 0){
             createBullet(speedRight, damageRight, lifeTimeRight, accuracyRight, Color.blue);
             cooldownTimer = cooldownRight;
-        }
+        }*/
     }
 
     
+
+    public float setDamage(float newDamage, float damageMult = 1){
+        if(newDamage < MIN_DAMAGE)
+            newDamage = MIN_DAMAGE;
+        damageLeft = newDamage * damageMult;
+        return newDamage;
+    }
+
+    public float setShotsPerSec (float shotsPerSec, float spsMult = 1){
+        cooldownLeft = 1 / (shotsPerSec * spsMult);
+        if(cooldownLeft > MAX_COOLDOWN)
+            cooldownLeft = MAX_COOLDOWN;
+        return (1 / cooldownLeft) / spsMult;
+    }
+
+    public float setBulletSpeed(float newSpeed){
+        speedLeft = newSpeed;
+        return speedLeft;
+    }
+
+    public float setLifetime(float newTime){
+        if(newTime < MIN_LIFE_TIME)
+            newTime = MIN_LIFE_TIME;
+        lifeTimeLeft = newTime;
+        return lifeTimeLeft;
+    }
+
+    //todo properly define accuracy
+    public float setAccuracy(float newAccuracy){
+        accuracyLeft = newAccuracy;
+        return accuracyLeft;
+    }
 }

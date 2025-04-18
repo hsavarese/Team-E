@@ -19,13 +19,16 @@ public class BullletDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Health colHP = collision.gameObject.GetComponent<Health>();
-        if(colHP != null){
-            if(colHP.isEnemy == this.isEnemy) return; //if the bullet collides with somthing of the same alignment, ignore collision
+        if(collision.tag == "Player" || collision.tag == "Enemy"){
+            Health colHP = collision.gameObject.GetComponent<Health>();
+            if(colHP != null){
+                if(colHP.isEnemy == this.isEnemy) return; //if the bullet collides with somthing of the same alignment, ignore collision
 
-            colHP.DealDamage(damage);
+                colHP.DealDamage(damage);
             
-        }
-        Destroy(this.gameObject);
+            }
+            Destroy(this.gameObject);
+        } else if(collision.tag == "Terrain")
+            Destroy(this.gameObject);
     }
 }
