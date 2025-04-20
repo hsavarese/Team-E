@@ -111,7 +111,7 @@ MonoBehaviour:
   shotsPerSec: 1
   shotSpeed: 10
   shotDistance: 1
-  accuracy: 0.1
+  accuracy: 5
   moveSpeed: 5
 --- !u!114 &3932231329681532420
 MonoBehaviour:
