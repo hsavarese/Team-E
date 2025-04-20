@@ -97,7 +97,8 @@ public class PlayerStats : MonoBehaviour
 
     //todo
     public float updateAccuracy(float addedAccuracy){
-        return 0;
+        accuracy = shoot.setAccuracy(addedAccuracy);
+        return accuracy;
     }
 
     public float updateMovement(float addedSpeed){
