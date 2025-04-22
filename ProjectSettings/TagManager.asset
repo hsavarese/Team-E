@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PauseManager
   - Item
+  - Enemy
+  - Terrain
   layers:
   - Default
   - TransparentFX

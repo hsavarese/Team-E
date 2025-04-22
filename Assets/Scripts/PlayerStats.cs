@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
 /*
@@ -23,7 +24,7 @@ public class PlayerStats : MonoBehaviour
     private float spsNegMult = 1;
     [SerializeField] private float shotSpeed;
     [SerializeField] private float shotDistance;
-    [SerializeField] private float accuracy;
+    [SerializeField] private float accuracy; //should be int greater than 1
     
     //Movement stats
     [SerializeField] private float moveSpeed;
@@ -95,13 +96,109 @@ public class PlayerStats : MonoBehaviour
         return shotDistance;
     }
 
-    //todo
     public float updateAccuracy(float addedAccuracy){
-        return 0;
+        accuracy = shoot.setAccuracy(accuracy + addedAccuracy);
+        return accuracy;
     }
 
     public float updateMovement(float addedSpeed){
         moveSpeed = move.setMoveSpeed(moveSpeed + addedSpeed);
         return moveSpeed;
+    }
+
+    public float getMaxHealth(){
+        return maxHealthBase * healthMult * healthNegMult;
+    }
+
+    public float getDamage(){
+        return damageBase * damageMult * damageNegMult;
+    }
+    public float getShotsPerSec(){
+        return shotsPerSec * spsMult * spsNegMult;
+    }
+    public float getShotSpeed(){
+        return shotSpeed;
+    }
+    public float getShotDistance(){
+        return shotDistance;
+    }
+    public float getAccuracy(){
+        return accuracy;
+    }
+    
+    public float getMoveSpeed(){
+        return moveSpeed;
+    }
+
+    /*
+    sets the players health stats
+
+    if a value is negative it is ignored
+    
+    returns the new max health
+    */
+    public float setHealth(float newHealth = -1, float newMult = -1, float newNegMult = -1){
+        if(newHealth < 0)
+            newHealth = maxHealthBase;
+        if(newMult >= 1) 
+            healthMult = newMult;
+        if(newNegMult > 0 && newNegMult <= 1)
+            healthNegMult = newNegMult;
+        
+        maxHealthBase = health.setMaxHealth(newHealth, healthMult * healthNegMult);
+        return maxHealthBase * healthMult * healthNegMult;
+    }
+
+/*
+    sets the players damage stats
+
+    if a value is negative it is ignored
+    
+    returns the new damage dealt per shot
+    */
+    public float setDamage(float newDamage = -1, float newMult = -1, float newNegMult = -1){
+        if(newDamage < 0)
+            newDamage = damageBase;
+        if(newMult >= 1) 
+            damageMult = newMult;
+        if(newNegMult > 0 && newNegMult <= 1)
+            damageNegMult = newNegMult;
+
+        damageBase = shoot.setDamage(newDamage, damageMult * damageNegMult);
+        return damageBase * damageMult * damageNegMult;
+    }
+
+    /*
+    sets the players shots per second stats
+
+    if a value is negative it is ignored
+    
+    returns the new shots per second
+    */
+    public float setShotsPerSec(float newShots = -1, float newMult = -1, float newNegMult = -1){
+        if(newShots < 0)
+            newShots = shotsPerSec;
+        if(newMult >= 1) 
+            spsMult = newMult;
+        if(newNegMult > 0 && newNegMult <= 1)
+            spsNegMult = newNegMult;
+
+        shotsPerSec = shoot.setShotsPerSec(newShots, spsMult * spsNegMult);
+        return shotsPerSec * spsMult * spsNegMult;
+    }
+
+    public float setShotSpeed(float newShotSpeed){
+        shotSpeed = shoot.setBulletSpeed(newShotSpeed);
+        return shotSpeed;
+    }
+
+    public float setShotDistance(float newDistance){
+        shotDistance = shoot.setLifetime(newDistance);
+        return shotDistance;
+    }
+
+    public float setAccuracy(float newAccuracy){
+        accuracy = shoot.setAccuracy(newAccuracy);
+        return accuracy;
     }
 }

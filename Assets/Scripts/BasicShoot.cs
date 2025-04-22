@@ -8,6 +8,7 @@ public class BasicShoot : MonoBehaviour
     const float MIN_DAMAGE = 1;
     const float MIN_LIFE_TIME = 0.1f;
     const float MAX_COOLDOWN = 10;
+    const float MAX_ACCURACY = 1;
     [SerializeField] private GameObject bullet;
     private float speedLeft;
     //public float speedRight;
@@ -24,7 +25,7 @@ public class BasicShoot : MonoBehaviour
     
     void createBullet(float speed, float damage, float lifeTime, float accuracy, Color color){
         Quaternion rotationOffset = transform.rotation;
-        rotationOffset.z += UnityEngine.Random.Range(-1, 1) * accuracy;
+        rotationOffset.z += UnityEngine.Random.Range(-1f, 1f) * accuracy;
         GameObject newBullet = Instantiate(bullet, transform.position, rotationOffset);
         BulletMovement bulMov = newBullet.GetComponent<BulletMovement>();
         BullletDamage bulDam = newBullet.GetComponent<BullletDamage>();
@@ -89,9 +90,10 @@ public class BasicShoot : MonoBehaviour
         return lifeTimeLeft;
     }
 
-    //todo properly define accuracy
     public float setAccuracy(float newAccuracy){
-        accuracyLeft = newAccuracy;
-        return accuracyLeft;
+        if(newAccuracy < 1 / MAX_ACCURACY)
+            newAccuracy = 1 / MAX_ACCURACY;
+        accuracyLeft = 1 / newAccuracy;
+        return newAccuracy;
     }
 }
