@@ -1,56 +1,142 @@
+using System;
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
-public class DungeonGenerator : MonoBehaviour
+public class Generation : MonoBehaviour
 {
-    public int width = 20;  // Grid width
-    public int height = 20; // Grid height
-    public int walkLength = 100; // Number of steps
-    public GameObject floorPrefab;
-    public GameObject wallPrefab;
-
-    private HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+    public GameObject[] roomPrefabs;
+    private GameObject lastRoom;
+    public int numberOfRooms = 5;
+    int[,] grid = new int[100, 100];
+    public float debgugWaitTime = 0.0f;
 
     void Start()
     {
-        GenerateDungeon();
-        SpawnTiles();
+        StartCoroutine(GenerateRooms());  // Start the coroutine
     }
 
-    void GenerateDungeon()
+    IEnumerator GenerateRooms()
     {
-        Vector2Int position = new Vector2Int(width / 2, height / 2); // Start in the middle
+        GameObject prevRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
+        Room prevRoomScript = prevRoom.GetComponent<Room>();
 
-        for (int i = 0; i < walkLength; i++)
+        int direction = 0;
+
+        int roomPointerRow = 50;
+        int roomPointerCol = 50;
+        grid[50, 50] = 1; // Mark the starting point as filled
+
+        for (int i = 1; i < numberOfRooms; i++)
         {
-            floorPositions.Add(position); // Mark this tile as floor
+            float rand = UnityEngine.Random.value;
 
-            // Randomly move in one of four directions
-            Vector2Int direction = GetRandomDirection();
-            position += direction;
+            //for weighted directions
+            if (rand < 0.5f)       
+                direction = 1;      
+            else if (rand < 0.7f)   
+                direction = 2;      
+            else if (rand < 0.9f)   
+                direction = 3;      
+            else
+                direction = 4;      
 
-            // Keep within bounds
-            position.x = Mathf.Clamp(position.x, 1, width - 2);
-            position.y = Mathf.Clamp(position.y, 1, height - 2);
-        }
-    }
-
-    void SpawnTiles()
-    {
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
+            // If the direction is already taken, try to find a valid one
+            if (CheckDirection(direction, roomPointerRow, roomPointerCol) != 0)
             {
-                Vector2Int pos = new Vector2Int(x, y);
-                GameObject tile = floorPositions.Contains(pos) ? floorPrefab : wallPrefab;
-                Instantiate(tile, new Vector3(x, y, 0), Quaternion.identity);
+                bool foundDir = false;
+                for (int j = 1; j < 5; j++)
+                {
+                    if (CheckDirection(j, roomPointerRow, roomPointerCol) == 0) 
+                    {
+                        direction = j;
+                        foundDir = true;
+                        break;
+                    }
+
+                    
+
+                }
+                if(!foundDir){
+                    yield break;
+                }
+                
+               
             }
+
+            GameObject newRoom = Instantiate(roomPrefabs[0]);
+            Room newRoomScript = newRoom.GetComponent<Room>();
+
+            // Position the room based on the chosen direction
+            switch (direction)
+            {
+                case 1: // North
+                    if (roomPointerRow > 0 && grid[roomPointerRow - 1, roomPointerCol] == 0)
+                    {
+                        roomPointerRow--;
+                        Vector3 offset = prevRoomScript.NorthEntrance.position - newRoomScript.SouthEntrance.position;
+                        newRoom.transform.position += offset;
+                        grid[roomPointerRow, roomPointerCol] = 1;
+
+                        prevRoom = newRoom;
+                        prevRoomScript = newRoomScript;
+                    }
+                    break;
+
+                case 2: // East
+                    if (roomPointerCol < 99 && grid[roomPointerRow, roomPointerCol + 1] == 0)
+                    {
+                        roomPointerCol++;
+                        Vector3 offset = prevRoomScript.EastEntrance.position - newRoomScript.WestEntrance.position;
+                        newRoom.transform.position += offset;
+                        grid[roomPointerRow, roomPointerCol] = 1;
+
+                        prevRoom = newRoom;
+                        prevRoomScript = newRoomScript;
+                    }
+                    break;
+
+                case 3: // South
+                    if (roomPointerRow < 99 && grid[roomPointerRow + 1, roomPointerCol] == 0)
+                    {
+                        roomPointerRow++;
+                        Vector3 offset = prevRoomScript.SouthEntrance.position - newRoomScript.NorthEntrance.position;
+                        newRoom.transform.position += offset;
+                        grid[roomPointerRow, roomPointerCol] = 1;
+
+                        prevRoom = newRoom;
+                        prevRoomScript = newRoomScript;
+                    }
+                    break;
+
+                case 4: // West
+                    if (roomPointerCol > 0 && grid[roomPointerRow, roomPointerCol - 1] == 0)
+                    {
+                        roomPointerCol--;
+                        Vector3 offset = prevRoomScript.WestEntrance.position - newRoomScript.EastEntrance.position;
+                        newRoom.transform.position += offset;
+                        grid[roomPointerRow, roomPointerCol] = 1;
+
+                        prevRoom = newRoom;
+                        prevRoomScript = newRoomScript;
+                    }
+                    break;
+            }
+
+            //This is to see the generation of the rooms in real time to debug
+            yield return new WaitForSeconds(debgugWaitTime);  
         }
     }
 
-    Vector2Int GetRandomDirection()
+    // Check if a direction is empty
+    int CheckDirection(int direction, int roomPointerRow, int roomPointerCol)
     {
-        Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
-        return directions[Random.Range(0, directions.Length)];
+        switch (direction)
+        {
+            case 1: return grid[roomPointerRow - 1, roomPointerCol]; // North
+            case 2: return grid[roomPointerRow, roomPointerCol + 1]; // East
+            case 3: return grid[roomPointerRow + 1, roomPointerCol]; // South
+            case 4: return grid[roomPointerRow, roomPointerCol - 1]; // West
+            default: return -1; // Invalid direction
+        }
     }
 }
