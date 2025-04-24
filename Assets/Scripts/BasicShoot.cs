@@ -24,9 +24,14 @@ public class BasicShoot : MonoBehaviour
     private float cooldownTimer;
     
     void createBullet(float speed, float damage, float lifeTime, float accuracy, Color color){
-        Quaternion rotationOffset = transform.rotation;
-        rotationOffset.z += UnityEngine.Random.Range(-1f, 1f) * accuracy;
-        GameObject newBullet = Instantiate(bullet, transform.position, rotationOffset);
+        Quaternion rotationBase = transform.rotation;
+
+        float rand = UnityEngine.Random.Range(-45f, 45f) * accuracy;
+        Vector3 offset = rotationBase.eulerAngles;
+        offset.z += rand;
+        rotationBase.eulerAngles = offset;
+
+        GameObject newBullet = Instantiate(bullet, transform.position, rotationBase);
         BulletMovement bulMov = newBullet.GetComponent<BulletMovement>();
         BullletDamage bulDam = newBullet.GetComponent<BullletDamage>();
         bulMov.speed = speed;
@@ -95,5 +100,25 @@ public class BasicShoot : MonoBehaviour
             newAccuracy = 1 / MAX_ACCURACY;
         accuracyLeft = 1 / newAccuracy;
         return newAccuracy;
+    }
+
+    public float getDamage(){
+        return damageLeft;
+    }
+
+    public float getAccuracy(){
+        return accuracyLeft;
+    }
+
+    public float getCooldown(){
+        return cooldownLeft;
+    }
+
+    public float getLifetime(){
+        return lifeTimeLeft;
+    }
+
+    public float getSpeed(){
+        return speedLeft;
     }
 }

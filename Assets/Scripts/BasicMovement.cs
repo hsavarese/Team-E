@@ -103,4 +103,8 @@ public class BasicMovement : MonoBehaviour
     {
         return isDashing;
     }
+
+    public float getSpeed(){
+        return moveSpeed;
+    }
 }
