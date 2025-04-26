@@ -152,7 +152,8 @@ public class PlayerStats : MonoBehaviour
 /*
     sets the players damage stats
 
-    if a value is negative it is ignored
+    if any value is negative it is ignored
+    if newNegMult greater than 1 it is ignored
     
     returns the new damage dealt per shot
     */
