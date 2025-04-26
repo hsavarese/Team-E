@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BioBitManager : MonoBehaviour
 {
@@ -16,10 +17,36 @@ public class BioBitManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             LoadBioBits();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // makes sures to hide the bio bits UI when going back to the main menu or the hub
+        if (scene.name == "Main Menu" || scene.name == "Hub")
+        {
+            if (bioBitText != null)
+            {
+                bioBitText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (bioBitText != null)
+            {
+                bioBitText.gameObject.SetActive(true);
+                UpdateUI();
+            }
         }
     }
 

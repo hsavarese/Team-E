@@ -342,6 +342,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveHub
       objectReference: {fileID: 0}
+    - target: {fileID: 5333143327864670985, guid: 4399cc5edb5457043ab3f30a097adc1d, type: 3}
+      propertyPath: m_Name
+      value: Settings button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935745907175996298, guid: 4399cc5edb5457043ab3f30a097adc1d, type: 3}
+      propertyPath: m_text
+      value: 'Settings
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
