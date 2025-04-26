@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1180494441170502673}
   - component: {fileID: 2052038306577762500}
   - component: {fileID: 2763627840358646326}
-  - component: {fileID: 3291847973215947475}
+  - component: {fileID: 310287967289172700}
   m_Layer: 5
   m_Name: Canvas DeathScreen
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3291847973215947475
+--- !u!114 &310287967289172700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04534c1d74a956644b01994b2b3e6ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathUI: {fileID: 879366847464696100}
 --- !u!1 &2065136545331265702
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +236,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3291847973215947475}
+      - m_Target: {fileID: 310287967289172700}
         m_TargetAssemblyTypeName: DeathScreen, NewAssembly
         m_MethodName: ReturnToHub
         m_Mode: 1
@@ -720,7 +719,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3291847973215947475}
+      - m_Target: {fileID: 310287967289172700}
         m_TargetAssemblyTypeName: DeathScreen, NewAssembly
         m_MethodName: ReturnToMainMenu
         m_Mode: 1

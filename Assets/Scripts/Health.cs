@@ -26,6 +26,7 @@ public class Health : MonoBehaviour
             healthPoints = MIN_MAX_HEALTH;
         } 
         movement = GetComponent<BasicMovement>();
+
     }
 
     // Update is called once per frame
@@ -94,7 +95,10 @@ public class Health : MonoBehaviour
         }
         
     }*/
-    
+    public bool GetHasDied()
+    {
+        return hasDied;
+    }
 
     //True if they can take damage, Flase If they can't take damage
     public bool IsVulnerable(){

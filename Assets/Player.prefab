@@ -177,9 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathUI: {fileID: 879366847464696100, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
   maxHealthPoints: 10
   iFrames: 1
   isEnemy: 0
+  deathScreen: {fileID: 0}
 --- !u!114 &7537860027383191025
 MonoBehaviour:
   m_ObjectHideFlags: 0

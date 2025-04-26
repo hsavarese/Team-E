@@ -226,18 +226,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231dd53dfb4f43937bd534c6d1c086ba, type: 3}
---- !u!1 &301478409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 879366847464696100, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
+--- !u!114 &301478415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310287967289172700, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
   m_PrefabInstance: {fileID: 1670207936}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &301478415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301478409}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04534c1d74a956644b01994b2b3e6ab1, type: 3}
@@ -44169,14 +44163,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas DeathScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 4190481364724867848, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 301478415}
-    - target: {fileID: 4190481364724867848, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToHub
-      objectReference: {fileID: 0}
     - target: {fileID: 7515573370329699962, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -44257,22 +44243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8502420375365758759, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 301478415}
-    - target: {fileID: 8502420375365758759, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToMainMenu
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3291847973215947475, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 879366847464696100, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 301478415}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 982eab53289d6fe4cbd911c9263aad56, type: 3}
 --- !u!1001 &1676635019
 PrefabInstance:
