@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+    public GameObject deathUI; //death screen for player
+    
+    private bool hasDied = false; //player is alive
     const float MIN_MAX_HEALTH = 1;
     public float maxHealthPoints; // minimum 1
     public float iFrames; //total time invulnerable between attacks
@@ -10,6 +14,8 @@ public class Health : MonoBehaviour
     private float invulTimer;
     private float healthPoints;
     private BasicMovement movement;
+
+    public DeathScreen deathScreen;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,32 +26,65 @@ public class Health : MonoBehaviour
             healthPoints = MIN_MAX_HEALTH;
         } 
         movement = GetComponent<BasicMovement>();
+
     }
 
     // Update is called once per frame
-    void Update() //no matter what damage kills the enemy, the enemy will drop bio bits
+    void Update()
     {
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && !hasDied)
         {
-            if (isEnemy)
-            {
-                BasicEnemy enemy = GetComponent<BasicEnemy>();
-                if (enemy != null)
-                {
-                    enemy.Die(); 
-                    return; // prevent further after destruction
-                }
-    
-            }
-
-            Destroy(this.gameObject); // fallback if no enemy logic
+            hasDied = true;
+            HandleDeath(); 
             return;
         }
-        if(invulTimer > 0){
+
+        if (invulTimer > 0)
+        {
             invulTimer -= Time.deltaTime;
         }
-
     }
+
+
+    private void HandleDeath()
+    {
+        if (isEnemy)
+        {
+            HandleEnemyDeath();
+        }
+        else
+        {
+            HandlePlayerDeath();
+        }
+    }
+
+    private void HandleEnemyDeath()
+    {
+        BasicEnemy enemy = GetComponent<BasicEnemy>();
+        if (enemy != null)
+        {
+            enemy.Die();
+            return;
+        }
+
+        Destroy(gameObject);
+    }
+
+    private void HandlePlayerDeath()
+    {
+         Debug.Log("Player died - Attempting to show death screen");
+
+         if (deathScreen != null)
+     {
+             Debug.Log("Found DeathScreen, calling ShowDeathScreen()");
+             deathScreen.ShowDeathScreen();
+     }
+         else
+    {
+             Debug.LogError("Could not find DeathScreen! Assign it in Inspector!");
+    }
+}
+
     /*{
         if(healthPoints <= 0){
             Destroy(this.gameObject);
@@ -56,7 +95,10 @@ public class Health : MonoBehaviour
         }
         
     }*/
-    
+    public bool GetHasDied()
+    {
+        return hasDied;
+    }
 
     //True if they can take damage, Flase If they can't take damage
     public bool IsVulnerable(){
