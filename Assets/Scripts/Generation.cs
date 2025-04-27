@@ -10,6 +10,8 @@ public class Generation : MonoBehaviour
     int[,] grid = new int[100, 100];
     public float debgugWaitTime = 0.0f;
 
+    private bool first = true;
+
     void Start()
     {
         StartCoroutine(GenerateRooms());  // Start the coroutine
@@ -31,14 +33,14 @@ public class Generation : MonoBehaviour
             float rand = UnityEngine.Random.value;
 
             //for weighted directions
-            if (rand < 0.5f)       
-                direction = 1;      
-            else if (rand < 0.7f)   
-                direction = 2;      
-            else if (rand < 0.9f)   
-                direction = 3;      
+            if (rand < 0.3f)
+                direction = 1;
+            else if (rand < 0.6f)
+                direction = 2;
+            else if (rand < 0.8f)
+                direction = 3;
             else
-                direction = 4;      
+                direction = 4;
 
             // If the direction is already taken, try to find a valid one
             if (CheckDirection(direction, roomPointerRow, roomPointerCol) != 0)
@@ -46,26 +48,31 @@ public class Generation : MonoBehaviour
                 bool foundDir = false;
                 for (int j = 1; j < 5; j++)
                 {
-                    if (CheckDirection(j, roomPointerRow, roomPointerCol) == 0) 
+                    if (CheckDirection(j, roomPointerRow, roomPointerCol) == 0)
                     {
                         direction = j;
                         foundDir = true;
                         break;
                     }
 
-                    
+
 
                 }
-                if(!foundDir){
+                if (!foundDir)
+                {
                     yield break;
                 }
-                
-               
+
+
             }
 
-            GameObject newRoom = Instantiate(roomPrefabs[0]);
+            GameObject newRoom = Instantiate(roomPrefabs[UnityEngine.Random.Range(1, 3)]);
             Room newRoomScript = newRoom.GetComponent<Room>();
-
+            if (first == true)
+            {
+                direction = 1;
+                first = false;
+            }
             // Position the room based on the chosen direction
             switch (direction)
             {
@@ -123,7 +130,7 @@ public class Generation : MonoBehaviour
             }
 
             //This is to see the generation of the rooms in real time to debug
-            yield return new WaitForSeconds(debgugWaitTime);  
+            yield return new WaitForSeconds(debgugWaitTime);
         }
     }
 

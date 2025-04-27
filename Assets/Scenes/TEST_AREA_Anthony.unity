@@ -321,7 +321,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &658633102
+--- !u!1 &778969138
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,21 +329,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 658633103}
+  - component: {fileID: 778969140}
+  - component: {fileID: 778969139}
   m_Layer: 0
-  m_Name: Generation
+  m_Name: OpenWorldGeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &658633103
+--- !u!114 &778969139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778969138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d5d80cf262bb5ac995935411f0c719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomTiles:
+  - {fileID: 2319141079566288435, guid: 5936c1958239482248feff4cded96fd7, type: 3}
+  - {fileID: 2319141079566288435, guid: 18bf26010259fefbba5df5c64c65647c, type: 3}
+  - {fileID: 2319141079566288435, guid: 69ea357ea5b737e81a6e2fe5fa98b3d5, type: 3}
+  - {fileID: 2319141079566288435, guid: a3a1d6a67abe7c14e8c8a3d29590ebe7, type: 3}
+  - {fileID: 2319141079566288435, guid: 52dd9dd890d0eb30aaaf80e15c618dc2, type: 3}
+  - {fileID: 2319141079566288435, guid: 2a877a97b61ed9a269e5aa7f48cf47d7, type: 3}
+  - {fileID: 2319141079566288435, guid: fd56a83201cef2ba4afbf544906cb457, type: 3}
+  - {fileID: 2319141079566288435, guid: 6e9469dc45486177393148d124c96787, type: 3}
+  - {fileID: 2319141079566288435, guid: fd2e8e1a75c9e0397a2ffb019e17eab9, type: 3}
+  widthOfOpenWorld: 20
+  heightOfopenWorld: 20
+--- !u!4 &778969140
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658633102}
+  m_GameObject: {fileID: 778969138}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.33180383, y: -3.4664178, z: 0.012191087}
@@ -426,53 +451,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 550528567210593545, guid: 0478795da771d8649baae89ad7699cf5, type: 3}
   m_PrefabInstance: {fileID: 800003943}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1425400656
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1425400658}
-  - component: {fileID: 1425400657}
-  m_Layer: 0
-  m_Name: DungeonGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1425400657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425400656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed76ff7f0f28a7e008abaf3babe4794a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomPrefabs:
-  - {fileID: 2319141079566288435, guid: 9198aaf448477306e8fe12c4017560ab, type: 3}
-  numberOfRooms: 200
---- !u!4 &1425400658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425400656}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.927124, y: -1.3354391, z: 0.008107299}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1606556172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,11 +497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.z
@@ -606,8 +584,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 658633103}
   - {fileID: 242323987}
   - {fileID: 1606556172}
   - {fileID: 800003943}
-  - {fileID: 1425400658}
+  - {fileID: 778969140}
