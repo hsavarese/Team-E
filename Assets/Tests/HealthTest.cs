@@ -3,6 +3,7 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+
 /*
 Tests the Health component
 
@@ -10,48 +11,66 @@ Each Test assumes the ones before it succeed, so if there is an error look at th
 */
 public class HealthTest
 {
-    /*
-    Check to make sure the Health component's start function works propoerly
-    */
-    [UnityTest]
-    [TestCase(10,   ExpectedResult = null)] //positive starting max health
-    [TestCase(0,    ExpectedResult = null)] //zero starting max health, should default to 1
-    [TestCase(-10,  ExpectedResult = null)] //negative starting max health, should default to 1
-    [TestCase(0.5f, ExpectedResult = null)] //starting max health between 0 and 1, should default to 1
-    public IEnumerator HealthInstantiatesProperly(float maxHealth)
+    private GameObject deathScreenInstance;
+
+    [SetUp]
+    public void SetUp()
     {
-        GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
-        hp.maxHealthPoints = maxHealth;
-        hp.iFrames = 0;
+        deathScreenInstance = new GameObject();
+        deathScreenInstance.AddComponent<FakeDeathScreen>(); // use FakeDeathScreen (inherits from DeathScreen)
+    }
 
-        yield return null; //skip one frame
-
-        Assert.AreEqual(hp.getCurrentHealth(), hp.maxHealthPoints);
-        Assert.AreEqual(hp.getCurrentHealth(), Mathf.Max(maxHealth, 1)); //check that the minimum starting health is 1
+    [TearDown]
+    public void TearDown()
+    {
+        if (deathScreenInstance != null)
+        {
+            UnityEngine.Object.DestroyImmediate(deathScreenInstance);
+        }
     }
 
     /*
-    Checks that the DealDamage function reduces the healthPoints by the inputed amount
+    Check to make sure the Health component's start function works properly
+    */
+    [UnityTest]
+    [TestCase(10, ExpectedResult = null)] 
+    [TestCase(0, ExpectedResult = null)] 
+    [TestCase(-10, ExpectedResult = null)] 
+    [TestCase(0.5f, ExpectedResult = null)] 
+    public IEnumerator HealthInstantiatesProperly(float maxHealth)
+    {
+        GameObject gameOb = new GameObject();
+        Health hp = gameOb.AddComponent<Health>();
+
+        hp.maxHealthPoints = maxHealth;
+        hp.iFrames = 0;
+
+        yield return null;
+
+        Assert.AreEqual(hp.getCurrentHealth(), hp.maxHealthPoints);
+        Assert.AreEqual(hp.getCurrentHealth(), Mathf.Max(maxHealth, 1));
+    }
+
+    /*
+    Checks that the DealDamage function reduces the healthPoints by the inputted amount
     Should only deal positive damage
     */
     [UnityTest]
-    [TestCase(10,  ExpectedResult = null)] //positive damage
-    [TestCase(0,   ExpectedResult = null)] //zero damage
-    [TestCase(-10, ExpectedResult = null)] //negative damage, should deal 0 damage
-    public IEnumerator HealthDealDamage(float damage){
+    [TestCase(10, ExpectedResult = null)] 
+    [TestCase(0, ExpectedResult = null)] 
+    [TestCase(-10, ExpectedResult = null)] 
+    public IEnumerator HealthDealDamage(float damage)
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 0;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(damage);
 
-        Assert.AreEqual(Mathf.Max(damage, 0), damageDealt); //checks that minimum damage is zero
+        Assert.AreEqual(Mathf.Max(damage, 0), damageDealt);
         Assert.AreEqual(hp.getCurrentHealth(), 100 - damageDealt);
     }
 
@@ -60,23 +79,23 @@ public class HealthTest
     Zero damage should still trigger invulnerability
     */
     [UnityTest]
-    [TestCase(10,  ExpectedResult = null)] //positive damage
-    [TestCase(0,   ExpectedResult = null)] //zero damage
-    [TestCase(-10, ExpectedResult = null)] //negative damage, should deal 0 damage
-    public IEnumerator HealthInvulnerable(float damage){
+    [TestCase(10, ExpectedResult = null)] 
+    [TestCase(0, ExpectedResult = null)] 
+    [TestCase(-10, ExpectedResult = null)] 
+    public IEnumerator HealthInvulnerable(float damage)
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 1;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(damage);
         float damageDealtInvulnerable = hp.DealDamage(2);
 
         Assert.AreEqual(damageDealt, Mathf.Max(damage, 0));
-        Assert.AreEqual(damageDealtInvulnerable, 0); 
+        Assert.AreEqual(damageDealtInvulnerable, 0);
         Assert.AreEqual(hp.getCurrentHealth(), 100 - damageDealt);
     }
 
@@ -84,14 +103,14 @@ public class HealthTest
     Checks that if iFrames is set to 0, dealDamage can deal multiple instances of damage at once
     */
     [UnityTest]
-    public IEnumerator HealthNoIFrames(){
+    public IEnumerator HealthNoIFrames()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 0;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(1);
         float damageDealtInvulnerable = hp.DealDamage(2);
@@ -102,21 +121,21 @@ public class HealthTest
     }
 
     /*
-    Checks that invulnerability last atleast until the next frame
+    Checks that invulnerability lasts at least until the next frame
     */
     [UnityTest]
-    public IEnumerator HealthIFramesLastMoreThanAFrame(){
+    public IEnumerator HealthIFramesLastMoreThanAFrame()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 1;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(1);
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealtInvulnerable = hp.DealDamage(2);
 
@@ -129,14 +148,14 @@ public class HealthTest
     Checks that invulnerability ends after iFrame seconds
     */
     [UnityTest]
-    public IEnumerator HealthIFramesEnd(){
+    public IEnumerator HealthIFramesEnd()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 1;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(1);
 
@@ -151,21 +170,20 @@ public class HealthTest
 
     /*
     Checks that invulnerability lasts at least 98% of the intended length
-    99% was inconsistent
     */
     [UnityTest]
-    public IEnumerator HealthIFramesTimedCorrectly(){
+    public IEnumerator HealthIFramesTimedCorrectly()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 1;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(1);
 
-        yield return new WaitForSeconds(hp.iFrames * 0.98f); //wait for 98% the length of the IFrames
+        yield return new WaitForSeconds(hp.iFrames * 0.98f);
 
         float damageDealtInvulnerable = hp.DealDamage(2);
 
@@ -175,25 +193,25 @@ public class HealthTest
     }
 
     /*
-    Checks to make sure that dealDamage doesn't reset the invulnerability timer while invulnerable
+    Checks that dealDamage doesn't reset the invulnerability timer while invulnerable
     */
     [UnityTest]
-    public IEnumerator HealthIFramesDontReset(){
+    public IEnumerator HealthIFramesDontReset()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 1;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damageDealt = hp.DealDamage(1);
 
-        yield return new WaitForSeconds(hp.iFrames/2);
+        yield return new WaitForSeconds(hp.iFrames / 2);
 
         float damageDealtInvulnerable = hp.DealDamage(2);
 
-        yield return new WaitForSeconds(hp.iFrames/2);
+        yield return new WaitForSeconds(hp.iFrames / 2);
 
         float damageDealtFinal = hp.DealDamage(4);
 
@@ -208,77 +226,85 @@ public class HealthTest
     Should only heal positive health
     */
     [UnityTest]
-    [TestCase(200, ExpectedResult = null)] //Overheal, should only heal the missing health
-    [TestCase(10,  ExpectedResult = null)] //positive heal
-    [TestCase(0,   ExpectedResult = null)] //zero heal, should do nothing
-    [TestCase(-10, ExpectedResult = null)] //negative heal, should do nothing
-    public IEnumerator HealthRestoreHealth(float healAmount){
+    [TestCase(200, ExpectedResult = null)] 
+    [TestCase(10, ExpectedResult = null)] 
+    [TestCase(0, ExpectedResult = null)] 
+    [TestCase(-10, ExpectedResult = null)] 
+    public IEnumerator HealthRestoreHealth(float healAmount)
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 0;
 
-        yield return null; //skip one frame
+        yield return null;
 
         float damage = 12;
         hp.DealDamage(damage);
         float healthRestored = hp.RestoreHealth(healAmount);
 
-        Assert.AreEqual(healthRestored, MathF.Min(damage, MathF.Max(0, healAmount))); //checks that the health restored is between the damage dealth and 0
+        Assert.AreEqual(healthRestored, MathF.Min(damage, MathF.Max(0, healAmount)));
         Assert.AreEqual(hp.getCurrentHealth(), (100 - damage) + healthRestored);
-        Assert.GreaterOrEqual(hp.maxHealthPoints, hp.getCurrentHealth()); //checks that health is not above max health
+        Assert.GreaterOrEqual(hp.maxHealthPoints, hp.getCurrentHealth());
     }
 
     /*
-    Checks that if health is reduced to 0 or less, it destroys itself
+    Checks that if health is reduced to 0 or less, it triggers death
     */
     [UnityTest]
-    [TestCase(0,  ExpectedResult = null)] //zero extra damage, zero health
-    [TestCase(10, ExpectedResult = null)] //positive extra damage, negative health
-    public IEnumerator HealthDeath(float extraDamage){
+    [TestCase(0, ExpectedResult = null)]
+    [TestCase(10, ExpectedResult = null)]
+    public IEnumerator HealthDeath(float extraDamage)
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
+
+        hp.deathScreen = deathScreenInstance.GetComponent<DeathScreen>(); // Correct assignment
+
         hp.maxHealthPoints = 100;
         hp.iFrames = 0;
+        hp.isEnemy = false;
 
-        yield return null; //skip one frame
+        yield return null;
 
         hp.DealDamage(hp.maxHealthPoints + extraDamage);
 
-        yield return null;//skip two frames because it was inconsistent with only one
+        yield return null;
         yield return null;
 
-        Assert.True(gameOb == null);
+        Assert.IsTrue(hp.getCurrentHealth() <= 0);
+        Assert.IsTrue(hp.GetHasDied());
     }
 
     /*
     Checks that getHealthPercent gets the correct health percentage
-    should only return between 0 and 1
+    Should only return between 0 and 1
     */
     [UnityTest]
-    public IEnumerator HealthPercentage(){
+    public IEnumerator HealthPercentage()
+    {
         GameObject gameOb = new GameObject();
-        gameOb.AddComponent<Health>();
-        Health hp = gameOb.GetComponent<Health>();
+        Health hp = gameOb.AddComponent<Health>();
         hp.maxHealthPoints = 100;
         hp.iFrames = 0;
 
-        yield return null;//skip one frame
+        yield return null;
 
-        Assert.AreEqual(hp.getHealthPercent(), 1); //starts at 100% health
+        Assert.AreEqual(hp.getHealthPercent(), 1);
 
-        hp.DealDamage(10); // 90 out of 100 health
+        hp.DealDamage(10);
 
         Assert.AreEqual(hp.getHealthPercent(), 0.9f);
 
-        hp.DealDamage(90); // 0 out of 100 health
+        hp.DealDamage(90);
 
         Assert.AreEqual(hp.getHealthPercent(), 0);
 
-        hp.DealDamage(10); // -10 out of 100 health
+        hp.DealDamage(10);
 
-        Assert.AreEqual(hp.getHealthPercent(), 0);        
+        Assert.AreEqual(hp.getHealthPercent(), 0);
     }
 }
+
+
+

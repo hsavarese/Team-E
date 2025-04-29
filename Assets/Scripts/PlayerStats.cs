@@ -152,7 +152,8 @@ public class PlayerStats : MonoBehaviour
 /*
     sets the players damage stats
 
-    if a value is negative it is ignored
+    if any value is negative it is ignored
+    if newNegMult greater than 1 it is ignored
     
     returns the new damage dealt per shot
     */
@@ -201,4 +202,17 @@ public class PlayerStats : MonoBehaviour
         accuracy = shoot.setAccuracy(newAccuracy);
         return accuracy;
     }
+
+    public string toString(){
+        return  "Health:\t\t\t" + health.getCurrentHealth() + "/" + getMaxHealth() + "\n" + 
+                "Damage:\t\t\t" + getDamage() + "\n" +
+                "Shots Per Second:\t" + getShotsPerSec() + "\n" +
+                "Accuracy:\t\t\t" + getAccuracy() + "\n" +
+                "Range:\t\t\t" + getShotDistance() + "\n" +
+                "Bullet Speed:\t\t" + getShotDistance() + "\n" +
+                "Move Speed:\t\t" + getShotSpeed() + "\n";
+                        
+    }
 }
+
+

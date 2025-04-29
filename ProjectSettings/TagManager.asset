@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Enemy
   - Terrain
+  - Room
   layers:
   - Default
   - TransparentFX
