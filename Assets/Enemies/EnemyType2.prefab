@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1763495811511348429}
   - component: {fileID: 9217494133733897364}
   - component: {fileID: -4918857638893023566}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyType2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7121880039589249092}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa870e184c795484fb064345fc5118fc, type: 3}
   m_Name: 
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 10000
+  maxHealthPoints: 1
   iFrames: 0
   isEnemy: 1
 --- !u!61 &1763495811511348429
@@ -159,7 +159,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7121880039589249092}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7121880039589249092}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cf88e244b9a22f42ae5a6461a65b085, type: 3}
   m_Name: 
