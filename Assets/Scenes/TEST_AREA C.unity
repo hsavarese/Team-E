@@ -667,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5943084077991183378, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: accuracy
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -44173,7 +44177,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435786513478667428, guid: 594805dac423dd946a7aec3c20ffbcbf, type: 3}
       propertyPath: spsMult
-      value: 2
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435786513478667428, guid: 594805dac423dd946a7aec3c20ffbcbf, type: 3}
+      propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435786513478667428, guid: 594805dac423dd946a7aec3c20ffbcbf, type: 3}
+      propertyPath: shotsPerSec
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5995372108671031576, guid: 594805dac423dd946a7aec3c20ffbcbf, type: 3}
       propertyPath: m_LocalPosition.x

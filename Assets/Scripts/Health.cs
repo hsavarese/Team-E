@@ -183,4 +183,13 @@ public class Health : MonoBehaviour
 
         return baseMax;
     }
+
+    public void TakeDamage(float damage)
+    {
+        if (IsVulnerable())
+        {
+            healthPoints -= damage;
+            invulTimer = iFrames;
+        }
+    }
 }

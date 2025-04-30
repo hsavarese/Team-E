@@ -7,7 +7,7 @@ public class BasicMovement : MonoBehaviour
 {
     const float MIN_SPEED = 2;
     const float MAX_SPEED = 10;
-    private float moveSpeed;
+    private float moveSpeed = 5f; // Initialize default move speed
     private float dashSpeed = 20f; // Dash speed multiplier
     private float dashDuration = 0.2f; // How long the dash lasts
     private float dashCooldown = 1f; // Cooldown between dashes
@@ -25,6 +25,8 @@ public class BasicMovement : MonoBehaviour
     private Collider2D playerCollider;
     private Color originalColor;
     private Color invincibleColor = new Color(1f, 1f, 1f, 0.5f); // Semi-transparent white
+    private int enemyLayer;
+    private bool isCollisionDisabled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +35,7 @@ public class BasicMovement : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
         originalColor = spriteRend.color;
+        enemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
     // Update is called once per frame
@@ -64,6 +67,13 @@ public class BasicMovement : MonoBehaviour
             dashTimer = dashDuration;
             cooldownTimer = dashCooldown;
             spriteRend.color = invincibleColor; // Visual feedback for invincibility
+            
+            // Disable collision with enemies
+            if (!isCollisionDisabled)
+            {
+                isCollisionDisabled = true;
+                Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, true);
+            }
         }
 
         // Apply dash if active
@@ -75,6 +85,13 @@ public class BasicMovement : MonoBehaviour
             {
                 isDashing = false;
                 spriteRend.color = originalColor; // Restore original color
+                
+                // Re-enable collision with enemies
+                if (isCollisionDisabled)
+                {
+                    isCollisionDisabled = false;
+                    Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, false);
+                }
             }
         }
 
