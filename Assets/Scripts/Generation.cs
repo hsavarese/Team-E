@@ -19,6 +19,7 @@ public class Generation : MonoBehaviour
 
     IEnumerator GenerateRooms()
     {
+        //Places starting room
         GameObject prevRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
         Room prevRoomScript = prevRoom.GetComponent<Room>();
 
@@ -32,7 +33,7 @@ public class Generation : MonoBehaviour
         {
             float rand = UnityEngine.Random.value;
 
-            //for weighted directions
+            //Chooses a random weighted direction 
             if (rand < 0.3f)
                 direction = 1;
             else if (rand < 0.6f)
@@ -55,14 +56,11 @@ public class Generation : MonoBehaviour
                         break;
                     }
 
-
-
                 }
                 if (!foundDir)
                 {
                     yield break;
                 }
-
 
             }
 
@@ -73,7 +71,7 @@ public class Generation : MonoBehaviour
                 direction = 1;
                 first = false;
             }
-            // Position the room based on the chosen direction
+            // Position the room based on the chosen direction and offset of the last room.
             switch (direction)
             {
                 case 1: // North
