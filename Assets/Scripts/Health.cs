@@ -116,7 +116,7 @@ public class Health : MonoBehaviour
         if(IsVulnerable()){
             invulTimer = iFrames;
             if(damage > 0){ 
-                healthPoints -= damage;
+                healthPoints -= 800;
                 return damage;
             }
         }
