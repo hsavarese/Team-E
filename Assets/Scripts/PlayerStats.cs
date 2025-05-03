@@ -37,14 +37,28 @@ public class PlayerStats : MonoBehaviour
         maxHealthBase = health.setMaxHealth(maxHealthBase, healthMult * healthNegMult);
 
         shoot = GetComponent<BasicShoot>();
-        damageBase = shoot.setDamage(damageBase, damageMult * damageNegMult);
-        shotsPerSec = shoot.setShotsPerSec(shotsPerSec);
-        shotSpeed = shoot.setBulletSpeed(shotSpeed);
-        shotDistance = shoot.setLifetime(shotDistance);
-        accuracy = shoot.setAccuracy(accuracy);
+        if (shoot != null)
+        {
+            damageBase = shoot.setDamage(damageBase, damageMult * damageNegMult);
+            shotsPerSec = shoot.setShotsPerSec(shotsPerSec);
+            shotSpeed = shoot.setBulletSpeed(shotSpeed);
+            shotDistance = shoot.setLifetime(shotDistance);
+            accuracy = shoot.setAccuracy(accuracy);
+        }
+        else
+        {
+            Debug.LogWarning("BasicShoot component not found!");
+        }
 
         move = GetComponent<BasicMovement>();
-        moveSpeed = move.setMoveSpeed(moveSpeed);
+        if (move != null)
+        {
+            moveSpeed = move.setMoveSpeed(moveSpeed);
+        }
+        else
+        {
+            Debug.LogWarning("BasicMovement component not found!");
+        }
     }
 
     // Update is called once per frame
