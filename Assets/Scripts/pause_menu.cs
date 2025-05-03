@@ -16,7 +16,7 @@ public class Pause_menu : MonoBehaviour
     void Start()
     {
         
-        PausePanel.SetActive(false);
+        PausePanel.SetActive(true);
         Dark_Overlay.SetActive(false);
     }
 
@@ -27,7 +27,7 @@ public class Pause_menu : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.Escape))
     {
         Debug.Log("Escape key pressed");
-        if (isPaused)
+        if (!isPaused)
         {
             ResumeGame();
         }
@@ -46,7 +46,7 @@ public class Pause_menu : MonoBehaviour
     {
         PausePanel.SetActive(true);
         Dark_Overlay.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         isPaused = true;
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -55,7 +55,7 @@ public class Pause_menu : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Dark_Overlay.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         isPaused = false;
     }
 
