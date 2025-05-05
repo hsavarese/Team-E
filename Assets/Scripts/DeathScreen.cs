@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,6 +38,10 @@ public class DeathScreen : MonoBehaviour
     {
         // This still stays if you want, otherwise FakeDeathScreen handles skipping too
         return Application.isEditor && (Application.isBatchMode || System.Environment.CommandLine.Contains("-nographics"));
+    }
+
+    public void test(){
+        Debug.Log("test");
     }
 }
 
