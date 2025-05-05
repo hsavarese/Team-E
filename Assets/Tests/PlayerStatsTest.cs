@@ -3,10 +3,11 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
-/*
+
 public class PlayerStatsTest
 {
     const string PathPlayer = "Assets\\Player.prefab";
+    private GameObject playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
 
     // A Test behaves as an ordinary method
     [Test]
@@ -21,7 +22,8 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsInstantiates()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
+        GameObject player = Object.Instantiate(playerPrefab);
+        
         //player.SetActive(true);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
@@ -55,8 +57,7 @@ public class PlayerStatsTest
     [TestCase(-1, -1, 2,  ExpectedResult = null)]
     public IEnumerator PlayerStatsSetHealthIgnore(float hp, float mult, float negMult)
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -76,8 +77,7 @@ public class PlayerStatsTest
     [TestCase(0,  ExpectedResult = null)]
     public IEnumerator PlayerStatsSetHealthBase(float hp)
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -89,28 +89,27 @@ public class PlayerStatsTest
         Assert.AreEqual(newhealth, maxHealth);
     }
 
-    [UnityTest]
-    public IEnumerator PlayerStatsSetHealthMult()
-    {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+    // [UnityTest]
+    // public IEnumerator PlayerStatsSetHealthMult()
+    // {
+    //     GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
+    //     player.SetActive(true);
+    //     PlayerStats stats = player.GetComponent<PlayerStats>();
         
-        yield return null; //skip one frame to let start funcion work
+    //     yield return null; //skip one frame to let start funcion work
 
-        float health = stats.getMaxHealth();
-        float newhealth = stats.setHealth(newMult: 2);
-        float maxHealth = player.GetComponent<Health>().getMaxHealth();
+    //     float health = stats.getMaxHealth();
+    //     float newhealth = stats.setHealth(newMult: 2);
+    //     float maxHealth = player.GetComponent<Health>().getMaxHealth();
 
-        Assert.AreEqual(health * 2, newhealth);
-        Assert.AreEqual(newhealth, maxHealth);
-    }
+    //     Assert.AreEqual(health * 2, newhealth);
+    //     Assert.AreEqual(newhealth, maxHealth);
+    // }
 
     [UnityTest]
     public IEnumerator PlayerStatsSetHealthNegMult()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -126,8 +125,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetHealthFull()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -142,8 +140,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetHealthAgain()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -164,8 +161,7 @@ public class PlayerStatsTest
     [TestCase(-1, -1, 2,  ExpectedResult = null)]
     public IEnumerator PlayerStatsSetDamageIgnore(float dam, float mult, float negMult)
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -185,8 +181,7 @@ public class PlayerStatsTest
     [TestCase(0,  ExpectedResult = null)]
     public IEnumerator PlayerStatsSetDamageBase(float dam)
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -201,8 +196,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetDamageMult()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -218,8 +212,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetDamageNegMult()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -235,8 +228,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetDamageFull()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -251,8 +243,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetDamageAgain()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -268,50 +259,47 @@ public class PlayerStatsTest
 
     
 
-    [UnityTest]
-    [TestCase(-1, -1, -1,  ExpectedResult = null)]
-    [TestCase(-1, -1, 2,  ExpectedResult = null)]
-    public IEnumerator PlayerStatsSetSPSIgnore(float sps, float mult, float negMult)
-    {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+    // [UnityTest]
+    // [TestCase(-1, -1, -1,  ExpectedResult = null)]
+    // [TestCase(-1, -1, 2,  ExpectedResult = null)]
+    // public IEnumerator PlayerStatsSetSPSIgnore(float sps, float mult, float negMult)
+    // {
+    //     GameObject player = Object.Instantiate(playerPrefab);
+    //     PlayerStats stats = player.GetComponent<PlayerStats>();
         
-        yield return null; //skip one frame to let start funcion work
+    //     yield return null; //skip one frame to let start funcion work
 
-        stats.setShotsPerSec(10, 3, 0.5f);
+    //     stats.setShotsPerSec(5, 3, 0.5f);
 
-        float baseSPS = stats.getMaxHealth();
-        float newSPS = stats.setShotsPerSec(sps, mult, negMult);
-        float cool = player.GetComponent<BasicShoot>().getCooldown();
+    //     float baseSPS = stats.getShotsPerSec();
+    //     float newSPS = stats.setShotsPerSec(sps, mult, negMult);
+    //     float cool = player.GetComponent<BasicShoot>().getCooldown();
 
-        Assert.AreEqual(baseSPS, newSPS);
-        Assert.AreEqual(newSPS, 1 / cool);
-    }
+    //     Assert.AreEqual(baseSPS, newSPS);
+    //     Assert.AreEqual(newSPS, 1 / cool);
+    // }
 
-    [UnityTest]
-    [TestCase(10,  ExpectedResult = null)]
-    [TestCase(0,  ExpectedResult = null)]
-    public IEnumerator PlayerStatsSetSPSBase(float sps)
-    {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+    // [UnityTest]
+    // [TestCase(10,  ExpectedResult = null)]
+    // [TestCase(0,  ExpectedResult = null)]
+    // public IEnumerator PlayerStatsSetSPSBase(float sps)
+    // {
+    //     GameObject player = Object.Instantiate(playerPrefab);
+    //     PlayerStats stats = player.GetComponent<PlayerStats>();
         
-        yield return null; //skip one frame to let start funcion work
+    //     yield return null; //skip one frame to let start funcion work
 
-        float newhealth = stats.setShotsPerSec(newShots: sps);
-        float maxHealth = player.GetComponent<Health>().getMaxHealth();
+    //     float newhealth = stats.setShotsPerSec(newShots: sps);
+    //     float maxHealth = player.GetComponent<Health>().getMaxHealth();
 
-        Assert.AreEqual(Mathf.Max(sps, 0.1f), newhealth);
-        Assert.AreEqual(newhealth, maxHealth);
-    }
+    //     Assert.AreEqual(Mathf.Max(sps, 0.1f), newhealth);
+    //     Assert.AreEqual(newhealth, maxHealth);
+    // }
 
     [UnityTest]
     public IEnumerator PlayerStatsSetSPSMult()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -327,8 +315,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetSPSNegMult()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -344,8 +331,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetSPSFull()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -360,8 +346,7 @@ public class PlayerStatsTest
     [UnityTest]
     public IEnumerator PlayerStatsSetSPSAgain()
     {
-        GameObject player = AssetDatabase.LoadAssetAtPath<GameObject>(PathPlayer);
-        player.SetActive(true);
+        GameObject player = Object.Instantiate(playerPrefab);
         PlayerStats stats = player.GetComponent<PlayerStats>();
         
         yield return null; //skip one frame to let start funcion work
@@ -375,4 +360,3 @@ public class PlayerStatsTest
         Assert.AreEqual(newhealth, maxHealth);
     }
 }
-*/
