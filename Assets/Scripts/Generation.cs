@@ -29,7 +29,7 @@ public class Generation : MonoBehaviour
         int roomPointerCol = 50;
         grid[50, 50] = 1; // Mark the starting point as filled
 
-        for (int i = 1; i < numberOfRooms; i++)
+        for (int i = 1; i < numberOfRooms + 1; i++)
         {
             float rand = UnityEngine.Random.value;
 
@@ -64,7 +64,17 @@ public class Generation : MonoBehaviour
 
             }
 
-            GameObject newRoom = Instantiate(roomPrefabs[UnityEngine.Random.Range(1, 3)]);
+
+            GameObject newRoom;
+            if (i == numberOfRooms)
+            {
+                newRoom = Instantiate(roomPrefabs[3]);
+            }
+            else
+            {
+                newRoom = Instantiate(roomPrefabs[UnityEngine.Random.Range(1, 3)]);
+            }
+
             Room newRoomScript = newRoom.GetComponent<Room>();
             if (first == true)
             {
