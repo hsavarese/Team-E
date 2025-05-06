@@ -48,5 +48,6 @@ MonoBehaviour:
   - {fileID: 2319141079566288435, guid: 5fb28b0cb11e152aab39445e6821f92a, type: 3}
   - {fileID: 2319141079566288435, guid: 9198aaf448477306e8fe12c4017560ab, type: 3}
   - {fileID: 2319141079566288435, guid: 77e99276d5d0ad5afbc57dab7a065afd, type: 3}
+  - {fileID: 2319141079566288435, guid: 677ac09db4231cd9e974e5a924e963ca, type: 3}
   numberOfRooms: 10
   debgugWaitTime: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Health : MonoBehaviour
 {
@@ -46,29 +47,25 @@ public class Health : MonoBehaviour
     }
 
 
-    private void HandleDeath()
-    {
-        if (isEnemy)
-        {
-            HandleEnemyDeath();
-        }
-        else
-        {
+    private void HandleDeath(){
+        if (tag == "Player"){
             HandlePlayerDeath();
+        } else {
+            Destroy(gameObject);
         }
     }
 
-    private void HandleEnemyDeath()
-    {
-        BasicEnemy enemy = GetComponent<BasicEnemy>();
-        if (enemy != null)
-        {
-            enemy.Die();
-            return;
-        }
+    // private void HandleEnemyDeath()
+    // {
+    //     BasicEnemy enemy = GetComponent<BasicEnemy>();
+    //     if (enemy != null)
+    //     {
+    //         enemy.Die();
+    //         return;
+    //     }
 
-        Destroy(gameObject);
-    }
+    //     Destroy(gameObject);
+    // }
 
     private void HandlePlayerDeath()
     {

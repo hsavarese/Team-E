@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1051624031172360253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3551537423847453271}
+  - component: {fileID: 1462381838815782188}
+  m_Layer: 0
+  m_Name: OpenWorldGeneration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3551537423847453271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051624031172360253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.33180383, y: -3.4664178, z: 0.012191087}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1462381838815782188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051624031172360253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d5d80cf262bb5ac995935411f0c719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomTiles:
+  - {fileID: 2319141079566288435, guid: 5936c1958239482248feff4cded96fd7, type: 3}
+  - {fileID: 2319141079566288435, guid: 18bf26010259fefbba5df5c64c65647c, type: 3}
+  - {fileID: 2319141079566288435, guid: 69ea357ea5b737e81a6e2fe5fa98b3d5, type: 3}
+  - {fileID: 2319141079566288435, guid: a3a1d6a67abe7c14e8c8a3d29590ebe7, type: 3}
+  - {fileID: 2319141079566288435, guid: 52dd9dd890d0eb30aaaf80e15c618dc2, type: 3}
+  - {fileID: 2319141079566288435, guid: 2a877a97b61ed9a269e5aa7f48cf47d7, type: 3}
+  - {fileID: 2319141079566288435, guid: fd56a83201cef2ba4afbf544906cb457, type: 3}
+  - {fileID: 2319141079566288435, guid: 6e9469dc45486177393148d124c96787, type: 3}
+  - {fileID: 2319141079566288435, guid: fd2e8e1a75c9e0397a2ffb019e17eab9, type: 3}
+  widthOfOpenWorld: 20
+  heightOfopenWorld: 20

@@ -107,9 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 224692722446295044, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
   moveSpeed: 0.05
-  BioBit: {fileID: 0}
+  BioBit: {fileID: 2936208051503382694, guid: d714fc015c8c81641befa1fdd7a41abb, type: 3}
   minBits: 1
   maxBits: 10
+  HealStation: {fileID: 3732594515260794960, guid: dfd0a87596534754aa56ec3ce7968aa1, type: 3}
+  healDropChance: 0.05
 --- !u!50 &6607697375912546579
 Rigidbody2D:
   serializedVersion: 5
@@ -149,9 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71ba22767389540953d1703882c999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathUI: {fileID: 0}
   maxHealthPoints: 1
   iFrames: 0
   isEnemy: 1
+  deathScreen: {fileID: 0}
 --- !u!61 &1763495811511348429
 BoxCollider2D:
   m_ObjectHideFlags: 0
