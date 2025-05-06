@@ -1,5 +1,5 @@
 using Unity.Mathematics;
-using Unity.VisualScripting.YamlDotNet.Core;
+//using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,11 +15,11 @@ public class BasicMovement : MonoBehaviour
     private float cooldownTimer = 0f;
     private bool isDashing = false;
 
-   /*
-    public Sprite still;
-    public Sprite forward;
-    public Sprite diagonal;
-    */
+    /*
+     public Sprite still;
+     public Sprite forward;
+     public Sprite diagonal;
+     */
     private Rigidbody2D rigBod;
     private SpriteRenderer spriteRend;
     private Collider2D playerCollider;
@@ -46,7 +46,7 @@ public class BasicMovement : MonoBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 playerPos = rigBod.position;
         Vector2 difVec = mousePos - playerPos;
-        
+
         /*
         if(hori == 0 && vert == 0){
             spriteRend.sprite = still;
@@ -67,7 +67,7 @@ public class BasicMovement : MonoBehaviour
             dashTimer = dashDuration;
             cooldownTimer = dashCooldown;
             spriteRend.color = invincibleColor; // Visual feedback for invincibility
-            
+
             // Disable collision with enemies
             if (!isCollisionDisabled)
             {
@@ -85,7 +85,7 @@ public class BasicMovement : MonoBehaviour
             {
                 isDashing = false;
                 spriteRend.color = originalColor; // Restore original color
-                
+
                 // Re-enable collision with enemies
                 if (isCollisionDisabled)
                 {
@@ -106,11 +106,12 @@ public class BasicMovement : MonoBehaviour
         rigBod.SetRotation(-angle);
     }
 
-    public float setMoveSpeed(float newSpeed){
+    public float setMoveSpeed(float newSpeed)
+    {
         moveSpeed = newSpeed;
-        if(moveSpeed > MAX_SPEED) 
+        if (moveSpeed > MAX_SPEED)
             moveSpeed = MAX_SPEED;
-        else if(moveSpeed < MIN_SPEED) 
+        else if (moveSpeed < MIN_SPEED)
             moveSpeed = MIN_SPEED;
         return moveSpeed;
     }
@@ -121,7 +122,8 @@ public class BasicMovement : MonoBehaviour
         return isDashing;
     }
 
-    public float getSpeed(){
+    public float getSpeed()
+    {
         return moveSpeed;
     }
 }

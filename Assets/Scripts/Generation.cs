@@ -17,7 +17,7 @@ public class Generation : MonoBehaviour
         StartCoroutine(GenerateRooms());  // Start the coroutine
     }
 
-    IEnumerator GenerateRooms()
+    public IEnumerator GenerateRooms()
     {
         //Places starting room
         GameObject prevRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
