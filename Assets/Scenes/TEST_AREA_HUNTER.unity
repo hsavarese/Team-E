@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 301478415}
+    - target: {fileID: 5943084077991183378, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7991998592608238386, guid: f27bc5283551abc4ebbee42a9334ed79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

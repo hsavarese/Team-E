@@ -19,10 +19,13 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) // <-- 2D version!
     {
-        Debug.Log("Loaded Dungoen");
+        BioBitPickup[] bioBits = FindObjectsByType<BioBitPickup>(FindObjectsSortMode.None);
+        foreach (BioBitPickup bioBit in bioBits)
+        {
+            Destroy(bioBit.gameObject);
+        }
+        Debug.Log("Loaded Dungeon");
         SceneManager.LoadScene(sceneToLoad);
         SceneManager.UnloadSceneAsync("TEST_AREA_Anthony");
-
-
     }
 }
